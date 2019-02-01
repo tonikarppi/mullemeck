@@ -6,11 +6,11 @@
 
 ## Documentation
 
-The documentation for this project is available [here](TODO).
+The documentation for this project is available <Instert Link Here>.
 
 ## Contribution guidelines
 
-For instructions of how to contribute to this project, see [CONTRIBUTING](CONTRIBUTING.md).
+For instructions of how to contribute to this project, see <Contributing.md>.
 
 ## Contributions
 
