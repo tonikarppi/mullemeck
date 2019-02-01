@@ -37,7 +37,8 @@ def test_read_config():
         "DBReadUserPassword": "123",
         "DBWriteUser": "cde",
         "DBWriteUserPassword": "123",
-        "CloneDirectory": "/tmp/test"
+        "CloneDirectory": "/tmp/test",
+        "DBName": "testdb"
     }
     writtenConfig["DEFAULT"] = data
 
@@ -51,3 +52,4 @@ def test_read_config():
     assert config.DB_WRITE_USER == data["DBWriteUser"]
     assert config.DB_WRITE_USER_PASSWORD == data["DBWriteUserPassword"]
     assert config.CLONE_DIRECTORY == data["CloneDirectory"]
+    assert config.DB_NAME == data["DBName"]

@@ -1,11 +1,13 @@
 import configparser
 from pathlib import Path
+from psycopg2 import connect
 CONFIG_FILE_PATH = "mulle.cfg"
 
 DB_READ_USER = ""
 DB_READ_USER_PASSWORD = ""
 DB_WRITE_USER = ""
 DB_WRITE_USER_PASSWORD = ""
+DB_NAME = "mulledb"
 
 CLONE_DIRECTORY = "/tmp/mulle/"
 
@@ -20,6 +22,7 @@ def read():
     global DB_WRITE_USER
     global DB_WRITE_USER_PASSWORD
     global CLONE_DIRECTORY
+    global DB_NAME
 
     config = configparser.ConfigParser()
     config_file = Path(CONFIG_FILE_PATH)
@@ -31,7 +34,8 @@ def read():
             "DBReadUserPassword": "",
             "DBWriteUser": "",
             "DBWriteUserPassword": "",
-            "CloneDirectory": CLONE_DIRECTORY
+            "CloneDirectory": CLONE_DIRECTORY,
+            "DBName": DB_NAME
         }
         with open(CONFIG_FILE_PATH, 'w') as configfile:
             config.write(configfile)
@@ -42,6 +46,7 @@ def read():
         DB_WRITE_USER = config["DEFAULT"]["DBWriteUser"]
         DB_WRITE_USER_PASSWORD = config["DEFAULT"]["DBWriteUserPassword"]
         CLONE_DIRECTORY = config["DEFAULT"]["CloneDirectory"]
+        DB_NAME = config["DEFAULT"]["DBName"]
 
     return validate()
 
@@ -51,8 +56,16 @@ def validate():
 
 
 def get_db_user():
-    pass
+    """
+        Returns a psycopg2 connection with read permission
+    """
+    return connect(f'DB_NAME={DB_NAME} \
+        user={DB_READ_USER} password={DB_READ_USER_PASSWORD}')
 
 
 def get_db_write_user():
-    pass
+    """
+        Returns a psycopg2 connection with write permission
+    """
+    return connect(f'DB_NAME={DB_NAME} \
+        user={DB_WRITE_USER} password={DB_WRITE_USER_PASSWORD}')
