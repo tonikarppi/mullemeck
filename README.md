@@ -6,7 +6,7 @@
 
 ## Documentation
 
-The documentation for this project is available <Instert Link Here>.
+The documentation for this project is available here (add link).
 
 ## Contribution guidelines
 
