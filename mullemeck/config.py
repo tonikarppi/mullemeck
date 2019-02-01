@@ -55,7 +55,7 @@ def validate():
     return True
 
 
-def get_db_user():
+def get_db_connection():
     """
         Returns a psycopg2 connection with read permission
     """
@@ -63,7 +63,7 @@ def get_db_user():
         user={DB_READ_USER} password={DB_READ_USER_PASSWORD}')
 
 
-def get_db_write_user():
+def get_db_write_connection():
     """
         Returns a psycopg2 connection with write permission
     """
