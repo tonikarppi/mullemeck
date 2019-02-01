@@ -18,3 +18,5 @@ script:
 notifications:
     slack:
         secure: Qk8PG+RUvp1ZPf5VfPPg12Vf4vzClGDBaTrQgbyGXFLAWAQpvcVWEzgDlDYpvETDWmmGmMv/OUDureRqoSN5/U3JvggK+YuJuUXT0VOamgM7UVOvNnQUD5xUbq8E/QCDB1ElKeU7UhmEP4uaclSN6JaGplofcFvf1+5QCAEaWDBna/wyO2+nOoyeNR0d5FtsWj6iiuBs4h3OLvmby9jHwByKaHfkz9ITF2R9n9Zddsr7tcAV+N1uQ8PjnS8TYKdgNQD17/Kr7ecv/e1nshknBzrB0lm8fVUq9WJG0JbNbybQzRib/tVrfr8DM8bxczNufnAw+A3Zku0oNVXq9XUHOWN6nNUhdYYlf+1VCo+qQLijBou3mGuTcU9W2Fvn86WUxY62vyAstfxwJSiqSAiFUifd2Cs8lq1rD+nZWyzUi4HRmMvo0KhXmoVmV82j3oFUeKizrisGo1PmNFuvypA+mAYO3PGs88FvFfFbRd3YZCIvhL2SdhcFUk03Czm1NmxfoIIYNTPVfcZWvuOXZ/xJV8WeChxMnC28cG2/5bqyTq2s62mENqPV6KmIXPzL+iGdQWcJWYOyP265kf1u7DzMfPyaNggOCEC6tmetjwmwQzOLpt4/0tTf2bkRaU7fyH0oWUpkoEei8hnXeo3FdRHzucdInS34h9c6MbgL29BoNeQ=
+        on_success: change
+        on_failure: always
