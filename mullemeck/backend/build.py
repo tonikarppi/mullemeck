@@ -1,5 +1,5 @@
 import subprocess
-import os
+import io
 
 
 def build_static_checks(project):
@@ -9,24 +9,28 @@ def build_static_checks(project):
     It assumes that the project will be cloned in projects/ and that the file
     is run from root level of the mullemeck project.
     """
-    path_to_mullemeck = os.getcwd()
-    # Change directory to the project
     command1 = 'cd ./projects/' + project
-    # runs pre-commit on all the files with the local configuration
-    command2 = 'pre-commit run -a -c ./.pre-commit-config.yaml'
-    # Saves the results of the combine two previous commands in pre-commit.log
-    subprocess.call(command1 + '&&' + command2 + '>' +
-                    path_to_mullemeck + '/pre-commit.log', shell=True)
-    # Reads the log file
-    with open('pre-commit.log') as file:
-        lines = file.readlines()
+    # runs pre-commit on all the files with the local config, in poetry enviro-
+    # nment
+    command2 = 'poetry run pre-commit run -a -c ./.pre-commit-config.yaml'
+    # Runs the build and gets the output in build object.
+    build = subprocess.Popen(command1 + '&&' + command2, shell=True,
+                             stdout=subprocess.PIPE)
+    # Waits for the process to end
+    build.wait()
+    success = build.returncode
 
-    # Creates a single string variable for all the logs
+    # Reads the output and saves it in lines, then concatenates it in single
+    # string logs.
+    lines = []
+    for line in io.TextIOWrapper(build.stdout, encoding="utf-8"):
+        lines.append(line)  # or another encoding
     logs = ' '.join(lines)
-    # If a test is not succesfuly run, 'failde' appears in the last line of the
-    # logs.
-    status = True
-    if 'Failed' in logs:
-        status = False
+
+    status = False
+    # If the shell command returns 0 it means that no errors occured. Every
+    # other value sets status to False.
+    if success == 0:
+        status = True
 
     return status, logs
