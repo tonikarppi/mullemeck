@@ -1,4 +1,5 @@
 import subprocess
+import io
 
 
 def build_tests(project):
@@ -7,21 +8,25 @@ def build_tests(project):
     It assumes that the project will be cloned in projects/ and that the file
     is run from root level of the mullemeck project.
     """
-    # Initates the test and saves it in a log file.
-    subprocess.call('pytest ./projects/'+project+'>pytest.log', shell=True)
 
-    # Reads the log file
-    with open('pytest.log') as file:
-        lines = file.readlines()
+    # Runs the build and gets the output in build object.
+    build = subprocess.Popen('poetry run pytest ./projects/'+project,
+                             shell=True, stdout=subprocess.PIPE)
+    # Waits for the process to end
+    build.wait()
+    success = build.returncode
 
-    # Creates a single string variable for all the logs
+    # Reads the output and saves it in lines, then concatenates it in single
+    # string logs.
+    lines = []
+    for line in io.TextIOWrapper(build.stdout, encoding="utf-8"):
+        lines.append(line)  # or another encoding
     logs = ' '.join(lines)
-    last_line = lines[-1]
 
-    # If a test is not succesfuly run, 'failde' appears in the last line of the
-    # logs.
-    status = True
-    if 'failed' in last_line:
-        status = False
+    status = False
+    # If the shell command returns 0 it means that no errors occured. Every
+    # other value sets status to False.
+    if success == 0:
+        status = True
 
     return status, logs
