@@ -1,4 +1,4 @@
-from flask import Flask, request, abort
+from flask import Flask, request, abort, render_template
 import os
 from .utils import compute_signature
 
@@ -10,7 +10,7 @@ github_url = os.environ.get('GITHUB_URL', None)
 
 @app.route('/')
 def index():
-    return '<h1>Hello world!</h1>'
+    return render_template('index.html')
 
 
 @app.route('/webhook', methods=['POST'])
