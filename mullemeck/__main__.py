@@ -1,4 +1,4 @@
-from mullemeck.backend import app
+from mullemeck import app
 
 
 def main(args):
