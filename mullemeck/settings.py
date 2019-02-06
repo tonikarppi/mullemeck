@@ -5,16 +5,17 @@ load_dotenv()
 
 github_secret = os.getenv('GITHUB_SECRET', default=None)
 github_url = os.getenv('GITHUB_URL', default=None)
-db_uri = os.getenv('DB_URI', default='sqlite:///dev.db')
+db_uri = os.getenv('DB_URI', default=None)
+db_uri = db_uri if db_uri else 'sqlite:///dev.db'
 
 
-def assert_not_none(variable, error_message):
-    assert variable is not None, error_message
+def assert_truthy(value, error_message):
+    assert value, error_message
 
 
 def validate_environment_variables():
-    assert_not_none(
+    assert_truthy(
         github_secret, 'GITHUB_SECRET environment variable required.')
 
-    assert_not_none(
+    assert_truthy(
         github_url, 'GITHUB_URL environment variable required.')
