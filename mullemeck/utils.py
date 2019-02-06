@@ -31,4 +31,5 @@ def fill_db_with_samples():
             log_message='This part contains log messages from build scripts'
         ),
     ])
+    session.commit()
     Session.remove()
