@@ -11,19 +11,23 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../dev.db'
 
 db = SQLAlchemy(app)
 
+
 class build_values(db.Model):
     __tablename__ = 'build'
     id = db.Column(db.Integer, primary_key=True)
     commit_id = db.Column(db.String, nullable=False)
     start_date = db.Column(db.DateTime, nullable=False)
-    status = db.Column(db.Enum('processing', 'failed', 'success'), nullable=False)
+    status = db.Column(
+        db.Enum('processing', 'failed', 'success'), nullable=False)
     log_message = db.Column(db.UnicodeText, default='')
 
 
 @app.route('/build_list/<int:page_num>')
 def build_list(page_num):
-    build_list = build_values.query.paginate(per_page=5, error_out=True, page=page_num)
+    build_list = build_values.query.paginate(
+        per_page=5, error_out=True, page=page_num)
     return render_template('build_list.html', build_list=build_list)
+
 
 @app.route('/')
 def index():
