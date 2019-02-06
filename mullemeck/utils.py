@@ -9,7 +9,7 @@ def compute_signature(secret, data):
     return 'sha1=' + hmac.new(secret_bytes, data, hashlib.sha1).hexdigest()
 
 
-def fill_db_with_samples():
+def add_samples_to_db():
     session = Session()
     session.add_all([
         Build(
