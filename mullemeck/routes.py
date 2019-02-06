@@ -7,7 +7,7 @@ from .settings import github_secret, github_url
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/Elev/Desktop/SoftwareEngineeringFundamentals/mullemeck/dev.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../dev.db'
 
 db = SQLAlchemy(app)
 
