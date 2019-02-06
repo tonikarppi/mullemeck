@@ -36,7 +36,7 @@ If this does not work, you'll have to manually source the virtual environment th
 
 ```
 python -m mullemeck create_tables
-pythom -m mullemeck add_samples
+python -m mullemeck add_samples
 ```
 
 ### Step 5. Start the server
