@@ -3,4 +3,4 @@ from mullemeck import main
 
 if __name__ == "__main__":
     import sys
-    main(sys.argv[1:])
+    main(*sys.argv[1:])
