@@ -2,7 +2,7 @@ from validator_collection import checkers
 import subprocess
 import io
 import os
-from .db import Session, Build
+from mullemeck.db import Session, Build
 import datetime
 
 
@@ -32,13 +32,14 @@ def run_build(repo_url, commit_id):
 
     build_success = clone_success and static_checks_success and tests_success
     build_status = 'success' if build_success else 'failed'
-    build_logs = clone_logs + '\n' + static_checks_success + '\n' + tests_logs
+    build_logs = clone_logs + static_logs + tests_logs
 
     # Updates the build
     new_build.status = build_status
     new_build.log_message = build_logs
-
+    session.commit()
     Session.remove()
+
     return 0
 
 
@@ -55,7 +56,7 @@ def clone_repo(repo_url, commit_id):
     if not os.path.isdir('/tmp/mullemeck/'):
         subprocess.call('mkdir /tmp/mullemeck/', shell=True)
     # Sets up directory to clone the repo.
-    directory = '/tmp/mullemeck/' + commit_id
+    directory = '/tmp/mullemeck/' + commit_id + '/'
     # Creates the folder and clones the repo in it.
     subprocess.call('mkdir ' + directory, shell=True)
     build = subprocess.Popen('cd ' + directory + ' && git clone ' + repo_url,
