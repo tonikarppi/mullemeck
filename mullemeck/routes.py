@@ -2,7 +2,7 @@ from flask import Flask, request, abort, render_template
 from .utils import compute_signature
 from .db import Session, Build
 from .settings import github_secret, github_url
-
+from .build import run_build
 
 app = Flask(__name__)
 
@@ -46,7 +46,8 @@ def webhooks():
     commit_id = req_json['head_commit']['id']
     print(commit_id)
 
-    # TODO: Start a build based on commit_id.
+    # Runs the build.
+    run_build(repository_url, commit_id)
 
     return '', 200
 
