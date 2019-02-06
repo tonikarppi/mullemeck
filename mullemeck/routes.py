@@ -1,15 +1,17 @@
 from flask import Flask, request, abort, render_template
-import os
 from .utils import compute_signature
+from .db import Session, Build
+from .settings import github_secret, github_url
 
 
 app = Flask(__name__)
-github_secret = os.environ.get('GITHUB_SECRET', None)
-github_url = os.environ.get('GITHUB_URL', None)
 
 
 @app.route('/')
 def index():
+    session = Session()
+    builds = session.query(Build).all()
+    print(builds)
     return render_template('index.html')
 
 
@@ -47,6 +49,12 @@ def webhooks():
     # TODO: Start a build based on commit_id.
 
     return '', 200
+
+
+@app.teardown_appcontext
+def remove_session(error):
+    # The session is removed after each request.
+    Session.remove()
 
 
 __all__ = ['app']
