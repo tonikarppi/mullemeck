@@ -11,7 +11,7 @@ def main(*args):
     if arg == 'create_tables':
         print(f'Creating tables in: {db_uri}')
         create_tables()
-    if arg == 'add_samples':
+    elif arg == 'add_samples':
         print(f'Adding sample entries to: {db_uri}')
         add_samples_to_db()
     elif arg == 'develop':
