@@ -44,14 +44,14 @@ def clone_repo(repo_url, commit_id):
     return success, logs, directory
 
 
-def build_static_checks(project):
+def build_static_checks(directory):
     """
     This function runs static checks using the pre-commit configuration of the
     project given in argument, on this project.
     It assumes that the project will be cloned in projects/ and that the file
     is run from root level of the mullemeck project.
     """
-    command1 = 'cd ./projects/' + project
+    command1 = 'cd ' + directory
     # runs pre-commit on all the files with the local config, in poetry enviro-
     # nment
     command2 = 'poetry run pre-commit run -a -c ./.pre-commit-config.yaml'
