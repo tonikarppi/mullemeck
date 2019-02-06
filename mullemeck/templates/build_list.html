@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang ="en">
+<head>
+  <meta charset="utf-8">
+  <title>Browse your Builds!</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      margin: 0;
+      padding: 25px;
+    }
+    body {
+      background-color: #36393E;
+      color: #FFFFFF;
+    }
+    #title_div {
+      text-align:center;
+      border-bottom: 2px solid #99AAB5;
+      background-color: #23272A;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      /*margin-bottom: 10px;*/
+    }
+    #upper_div {
+      text-align:center;
+      display: flex;
+      background-color:#D64B00;
+    }
+    #left_div {
+      text-align:center;
+      border-bottom: 2px solid #99AAB5;
+      border-right: 1px solid #B7B49F;
+      /*background-color:#E8A80C;*/
+      width: 50%;
+    }
+    #right_div {
+      text-align:center;
+      border-bottom: 2px solid #99AAB5;
+      border-left: 1px solid #B7B49F;
+      /*background-color:#2EFF03;*/
+      flex: 1;
+    }
+    #page_footer{
+      background-color:#000000;
+      height:50px;
+      color:#FFFFFF;
+    }
+  </style>
+</head>
+<body>
+  <div id="title_div">
+    <h1>Browse your Builds!</h1>
+  </div>
+  <div id="upper_div">
+    <div id="left_div">
+      <p><h2><a href="">Build View</a><h2></p>
+    </div>
+    <div id="right_div">
+      <p><h2><a href="">Build List</a><h2></p>
+    </div>
+  </div>
+  <div id="page_body">
+    {% for build in build_list.items %}
+      <p> {{ build.id }} </p>
+      <p> {{ build.log_message }} </p>
+      <p> {{ build.status }} </p>
+    {% endfor %}
+  </div>
+  <div id="page_footer">
+    {% for build in build_list.iter_pages() %}
+        <a href="{{ url_for('build_list', page_num=build) }}" style="color:#FFFFFF">{{ build }}</a>
+    {% endfor %}
+  </div>
+</body>
+</html>
