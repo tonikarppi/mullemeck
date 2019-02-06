@@ -32,6 +32,19 @@ poetry shell
 
 If this does not work, you'll have to manually source the virtual environment that Poetry created.
 
+### Step 4. Setting up the database
+
+```
+python -m mullemeck create_tables
+pythom -m mullemeck add_samples
+```
+
+### Step 5. Start the server
+
+```
+python -m mullemeck develop
+```
+
 ## Documentation
 
 The documentation for this project is available here (add link).
