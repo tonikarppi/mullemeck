@@ -12,7 +12,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../dev.db'
 db = SQLAlchemy(app)
 
 
-class build_values(db.Model):
+class BuildValues(db.Model):
     __tablename__ = 'build'
     id = db.Column(db.Integer, primary_key=True)
     commit_id = db.Column(db.String, nullable=False)
@@ -24,7 +24,7 @@ class build_values(db.Model):
 
 @app.route('/build_list/<int:page_num>')
 def build_list(page_num):
-    build_list = build_values.query.paginate(
+    build_list = BuildValues.query.paginate(
         per_page=5, error_out=True, page=page_num)
     return render_template('build_list.html', build_list=build_list)
 
