@@ -17,7 +17,7 @@ def main(*args):
     elif arg == 'develop':
         app.run(debug=True)
     elif arg == 'production':
-        app.run()
+        app.run(host="0.0.0.0")
     else:
         raise ValueError(f'Unexpected argument: {arg}')
 
