@@ -11,7 +11,7 @@ before_install:
     - pip install pip -U
     - pip install poetry
 install:
-    - poetry install -v
+    - poetry install -v --no-dev
 script:
     - pytest -q tests/
     - pre-commit run --all-files
