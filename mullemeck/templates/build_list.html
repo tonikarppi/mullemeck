@@ -44,10 +44,25 @@
       /*background-color:#2EFF03;*/
       flex: 1;
     }
+    #page_body{
+      text-align:center;
+      border-bottom: 2px solid #99AAB5;
+      border-left: 1px solid #B7B49F;
+      border-color: white;
+      color:#FFFFFF;
+      padding-bottom: 15px;
+    }
     #page_footer{
+      text-align: center;
       background-color:#000000;
       height:50px;
-      color:#FFFFFF;
+      padding-top: 8px;
+    }
+    a {
+      color: #FFFFFF;
+    }
+    #build_link{
+      color: #aca8c6;
     }
   </style>
 </head>
@@ -57,22 +72,23 @@
   </div>
   <div id="upper_div">
     <div id="left_div">
-      <p><h2><a href="">Build View</a><h2></p>
+      <p><h2><a href="{{ url_for('build_view', page_num=1) }}">Build View</a><h2></p>
     </div>
     <div id="right_div">
       <p><h2><a href="{{ url_for('build_list', page_num=1) }}">Build List</a><h2></p>
     </div>
   </div>
-  <div id="page_body">
-    {% for build in build_list.items %}
-      <p> {{ build.id }} </p>
+  {% for build in build_list.items %}
+    <div id="page_body">
+      <p> Build: {{ build.id }} </p>
       <p> {{ build.log_message }} </p>
       <p> {{ build.status }} </p>
-    {% endfor %}
-  </div>
-  <div id="page_footer">
+      <a id="build_link" href="{{ url_for('build_view', page_num=build.id) }}"> Open this build in buildview </a>
+    </div>
+  {% endfor %}
+  <div id="page_footer"> Pages:
     {% for build in build_list.iter_pages() %}
-        <a href="{{ url_for('build_list', page_num=build) }}" style="color:#FFFFFF">{{ build }}</a>
+        <a id="build_link" href="{{ url_for('build_list', page_num=build) }}">{{ build }}</a>
     {% endfor %}
   </div>
 </body>
