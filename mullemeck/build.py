@@ -27,12 +27,14 @@ def run_build(repo_url, commit_id):
 
     # Runs the build itself
     clone_success, clone_logs, directory = clone_repo(repo_url, commit_id)
+    dependencies_success, dependencies_logs = build_dependecies(directory)
     static_checks_success, static_logs = build_static_checks(directory)
     tests_success, tests_logs = build_tests(directory)
 
-    build_success = clone_success and static_checks_success and tests_success
+    build_success = clone_success and dependencies_success \
+        and static_checks_success and tests_success
     build_status = 'success' if build_success else 'failed'
-    build_logs = clone_logs + static_logs + tests_logs
+    build_logs = clone_logs + dependencies_logs + static_logs + tests_logs
 
     # Updates the build
     new_build.status = build_status
@@ -84,6 +86,39 @@ def clone_repo(repo_url, commit_id):
         subprocess.call('rmdir '+directory, shell=True)
 
     return success, logs, directory
+
+
+def build_dependecies(directory):
+    """
+    This function runs the installation of the dependecies necessary to run
+    the builds.
+    """
+    command1 = 'cd ' + directory
+    # We assume only poetry packages has to be installed, python, pip and
+    # poetry are assumed to be installed.
+    command2 = 'poetry install'
+    build = subprocess.Popen(command1 + ' && ' + command2, shell=True,
+                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    # Waits for the process to end
+    build.wait()
+    status = build.returncode
+
+    # Reads the output and saves it in lines, then concatenates it in single
+    # string logs.
+    lines = []
+    for line in io.TextIOWrapper(build.stdout, encoding="utf-8"):
+        lines.append(line)
+    for line in io.TextIOWrapper(build.stderr, encoding="utf-8"):
+        lines.append(line)
+    logs = ' '.join(lines)
+
+    success = False
+    # If the shell command returns 0 it means that no errors occured. Every
+    # other value sets status to False.
+    if status == 0:
+        success = True
+
+    return success, logs
 
 
 def build_static_checks(directory):
