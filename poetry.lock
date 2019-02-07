@@ -1,5 +1,5 @@
 [[package]]
-category = "dev"
+category = "main"
 description = "A few extensions to pyyaml."
 name = "aspy.yaml"
 optional = false
@@ -27,7 +27,7 @@ python = "<3.7"
 version = "*"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Atomic file writes."
 name = "atomicwrites"
 optional = false
@@ -35,7 +35,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 version = "1.3.0"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Classes Without Boilerplate"
 name = "attrs"
 optional = false
@@ -62,7 +62,7 @@ python-versions = "*"
 version = "1.4"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Validate configuration and produce human readable error messages."
 name = "cfgv"
 optional = false
@@ -81,7 +81,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 version = "7.0"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Cross-platform colored terminal text."
 marker = "sys_platform == \"win32\""
 name = "colorama"
@@ -150,7 +150,7 @@ Flask = ">=0.10"
 SQLAlchemy = ">=0.8.0"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "File identification library for Python"
 name = "identify"
 optional = false
@@ -158,7 +158,7 @@ python-versions = "*"
 version = "1.2.1"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Read metadata from Python packages"
 name = "importlib-metadata"
 optional = false
@@ -169,7 +169,7 @@ version = "0.8"
 zipp = ">=0.3.2"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Read resources from Python packages"
 marker = "python_version < \"3.7\""
 name = "importlib-resources"
@@ -256,7 +256,7 @@ python-versions = "*"
 version = "0.6.1"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "More routines for operating on iterables, beyond itertools"
 name = "more-itertools"
 optional = false
@@ -267,7 +267,7 @@ version = "5.0.0"
 six = ">=1.0.0,<2.0.0"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Node.js virtual environment builder"
 name = "nodeenv"
 optional = false
@@ -287,7 +287,7 @@ mako = "*"
 markdown = ">=3.0"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "plugin and hook calling mechanisms for python"
 name = "pluggy"
 optional = false
@@ -295,7 +295,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 version = "0.8.1"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "A framework for managing and maintaining multi-language pre-commit hooks."
 name = "pre-commit"
 optional = false
@@ -326,7 +326,7 @@ python-versions = "*"
 version = "2.7.7"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "library with cross-python path, ini-parsing, io, code, log facilities"
 name = "py"
 optional = false
@@ -364,7 +364,7 @@ isort = ">=4.2.5"
 mccabe = "*"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "pytest: simple powerful testing with Python"
 name = "pytest"
 optional = false
@@ -390,7 +390,7 @@ python-versions = "*"
 version = "0.10.1"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "YAML parser and emitter for Python"
 name = "pyyaml"
 optional = false
@@ -406,7 +406,7 @@ python-versions = "*"
 version = "0.11.0"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Python 2 and 3 compatibility utilities"
 name = "six"
 optional = false
@@ -422,7 +422,7 @@ python-versions = "*"
 version = "1.2.17"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Python Library for Tom's Obvious, Minimal Language"
 name = "toml"
 optional = false
@@ -450,7 +450,7 @@ version = "1.3.1"
 jsonschema = "*"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Virtual Python Environment builder"
 name = "virtualenv"
 optional = false
@@ -477,7 +477,7 @@ python-versions = "*"
 version = "1.11.1"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Pathlib-compatible object wrapper for zip files"
 name = "zipp"
 optional = false
@@ -485,7 +485,7 @@ python-versions = ">=2.7"
 version = "0.3.3"
 
 [metadata]
-content-hash = "0f75a302e3312f070643162c4327b843616246b29e4fe3efc990dddca17244d7"
+content-hash = "ad1ae447d8ea6e1ffeb582c4405a5f29c3eda5919db154fd256355c49dc4165e"
 python-versions = "^3.6.6"
 
 [metadata.hashes]
