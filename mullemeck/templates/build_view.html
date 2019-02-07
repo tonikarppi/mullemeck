@@ -23,25 +23,28 @@
       margin: 0;
       padding: 0;
       width: 100%;
-      /*margin-bottom: 10px;*/
+    }
+    #upper_div {
+      text-align:center;
+      display: flex;
+      background-color:#D64B00;
     }
     #left_div {
       text-align:center;
       border-bottom: 2px solid #99AAB5;
       border-right: 1px solid #B7B49F;
-      /*background-color:#E8A80C;*/
       width: 50%;
     }
     #right_div {
       text-align:center;
       border-bottom: 2px solid #99AAB5;
       border-left: 1px solid #B7B49F;
-      /*background-color:#2EFF03;*/
       flex: 1;
     }
     #page_body {
       margin-left: 15%;
       margin-top: 30px;
+      margin-bottom: 100px;
       border-bottom: 2px solid #99AAB5;
       border-top: 2px solid #99AAB5;
       border-left: 2px solid #99AAB5;
@@ -66,26 +69,52 @@
     #build_link{
       color: #aca8c6;
     }
+    textarea {
+      width: 100%;
+      color: #FFFFFF;
+      background-color: #36393E;
+      font-size: 15px;
+      overflow:hidden;
+      resize: none;
+      border: none;
+    }
   </style>
+  <script>
+    function fixTextBoxSize(box) {
+      box.style.height = "1px";
+      box.style.height = (25+box.scrollHeight)+"px";
+    }
+  </script>
 </head>
 <body>
   <div id="title_div">
     <h1> <a href="{{ url_for('index') }}"> Browse your Builds! </a> </h1>
   </div>
-  <div style="text-align:center; display: flex; background-color:#D64B00">
+  <div id = "upper_div">
     <div id="left_div">
-      <p><h2><a href="{{ url_for('build_view', page_num=1) }}">Build View</a><h2></p>
+      <p><h2>Build View<h2></p>
     </div>
     <div id="right_div">
       <p><h2><a href="{{ url_for('build_list', page_num=1) }}">Build List</a><h2></p>
     </div>
   </div>
   <div id="page_body">
-    <p><h2>Build ID: {{ build_list.items[0].id }} </h2></p>
-    <p><b>Commit ID:</b> {{ build_list.items[0].commit_id }} </p>
-    <p><b>Date:</b> {{ build_list.items[0].start_date }} </p>
-    <p><b>Status:</b> {{ build_list.items[0].status }} </p>
-    <p><b>Log Message:</b> {{ build_list.items[0].log_message }} </p>
+    <p>
+      <h2>Build ID: {{ build_list.items[0].id }} </h2>
+    </p>
+    <p>
+      <b>Commit ID:</b> {{ build_list.items[0].commit_id }}
+    </p>
+    <p>
+      <b>Date:</b> {{ build_list.items[0].start_date }}
+    </p>
+    <p>
+      <b>Status:</b> {{ build_list.items[0].status }}
+    </p>
+    <p>
+      <h3>Log Message</h3>
+    </p>
+    <textarea readonly onkeyup="textAreaAdjust(this)">{{build_list.items[0].log_message}}</textarea>
   </div>
   <div id="page_footer">
     Choose a build by id:
