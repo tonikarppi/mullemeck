@@ -49,6 +49,16 @@
       width: 60%;
       padding: 5%;
     }
+    #page_footer{
+      background-color:#000000;
+      height:50px;
+      color:#FFFFFF;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -71,6 +81,7 @@
     <p><b>Log Message:</b> {{ build_list.items[0].log_message }} </p>
   </div>
   <div id="page_footer">
+    Choose a build by id:
     {% for x in range(1, build_list.pages+1) %}
         <a href="{{ url_for('build_view', page_num=x) }}" style="color:#FFFFFF">{{ x }}</a>
     {% endfor %}
