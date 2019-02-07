@@ -13,7 +13,7 @@ class Paginator:
                 self.list[j].append(list[j*per_page+y])
             j += 1
             i -= per_page
-        if float(len(list) / per_page)-len(list) // per_page > 0:
+        if self.number_of_items % per_page != 0:
             self.number_of_pages = (self.number_of_items // per_page) + 1
         else:
             self.number_of_pages = (self.number_of_items // per_page)

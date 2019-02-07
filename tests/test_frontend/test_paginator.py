@@ -38,3 +38,6 @@ def test_paginate_single_items():
     assert(paginated_list.list[4][0] == 4)
     assert(paginated_list.number_of_items == 5)
     assert(paginated_list.number_of_pages == 5)
+
+test_paginate_number_list()
+test_paginate_single_items()
