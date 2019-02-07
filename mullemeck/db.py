@@ -1,4 +1,4 @@
-from .settings import db_uri
+from mullemeck.settings import db_uri
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
