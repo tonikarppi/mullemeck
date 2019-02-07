@@ -76,3 +76,4 @@ This section contains a list of the contribution by the authors of this project.
     -   Dockerfile
     -   Travis CI integration
     -   ORM
+-   Added instructions for setting up the project in the README.
