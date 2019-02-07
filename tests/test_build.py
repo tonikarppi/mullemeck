@@ -1,7 +1,9 @@
 from mullemeck.build import clone_repo
-import pytest
+from mullemeck.build import build_static_checks
+from mullemeck.build import build_tests
 import os
 import subprocess
+import pytest
 
 
 def test_clone_repo():
@@ -25,3 +27,20 @@ def test_clone_repo():
     # Remove the cloned repo to be able to run tests again. Otherwise throws
     # error because the path already exists and diretory not empty.
     subprocess.call('rm -rf /tmp/mullemeck/latestSnake', shell=True)
+
+
+def test_build_static_checks():
+    success, logs = build_static_checks('random/path/to/nowhere')
+    assert not success
+    assert logs != ''
+    # runs on private repo. Should not work
+    clone_repo('https://github.com/tonikarppi/dd2480-lab1.git', 'privaterepo')
+    success, logs = build_static_checks('tmp/mullemeck/privatrepo')
+    assert not success
+    assert logs != ''
+
+
+def test_build_tests():
+    success, logs = build_tests('random/path/to/nowhere')
+    assert not success
+    assert logs != ''
