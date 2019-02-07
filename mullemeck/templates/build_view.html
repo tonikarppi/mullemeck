@@ -69,6 +69,10 @@
     #build_link{
       color: #aca8c6;
     }
+    #row_list {
+      margin:0;
+      padding: 0;
+    }
     textarea {
       width: 100%;
       color: #FFFFFF;
@@ -114,7 +118,9 @@
     <p>
       <h3>Log Message</h3>
     </p>
-    <textarea readonly onkeyup="textAreaAdjust(this)">{{build_list.items[0].log_message}}</textarea>
+    {% for row in build_list.items[0].log_message.split("\n") %}
+      <p id="row_list"> {{row}} </p>
+    {% endfor %}
   </div>
   <div id="page_footer">
     Choose a build by id:
