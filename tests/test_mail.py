@@ -1,4 +1,4 @@
-from mullemeck.backend import email
+from mullemeck import email
 from flask_mail import Mail
 
 app = email.app
