@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang ="en">
+<head>
+  <meta charset="utf-8">
+  <title>Browse your Builds!</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      margin: 0;
+      padding: 25px;
+    }
+    body {
+      background-color: #36393E;
+      color: #FFFFFF;
+    }
+    #title_div {
+      text-align:center;
+      border-bottom: 2px solid #99AAB5;
+      background-color: #23272A;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      /*margin-bottom: 10px;*/
+    }
+    #left_div {
+      text-align:center;
+      border-bottom: 2px solid #99AAB5;
+      border-right: 1px solid #B7B49F;
+      /*background-color:#E8A80C;*/
+      width: 50%;
+    }
+    #right_div {
+      text-align:center;
+      border-bottom: 2px solid #99AAB5;
+      border-left: 1px solid #B7B49F;
+      /*background-color:#2EFF03;*/
+      flex: 1;
+    }
+    #page_body {
+      margin-left: 15%;
+      margin-top: 30px;
+      border-bottom: 2px solid #99AAB5;
+      border-top: 2px solid #99AAB5;
+      border-left: 2px solid #99AAB5;
+      border-right: 2px solid #99AAB5;
+      width: 60%;
+      padding: 5%;
+    }
+    #page_footer{
+      background-color:#000000;
+      height:50px;
+      color:#FFFFFF;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      padding: 5px;
+    }
+    a {
+      color:#FFFFFF;
+    }
+  </style>
+</head>
+<body>
+  <div id="title_div">
+    <h1>Browse your Builds!</h1>
+  </div>
+  <div style="text-align:center; display: flex; background-color:#D64B00">
+    <div id="left_div">
+      <p><h2><a href="{{ url_for('build_view', page_num=1) }}">Build View</a><h2></p>
+    </div>
+    <div id="right_div">
+      <p><h2><a href="{{ url_for('build_list', page_num=1) }}">Build List</a><h2></p>
+    </div>
+  </div>
+  <div id="page_body">
+    <p><h2>Build ID: {{ build_list.items[0].id }} </h2></p>
+    <p><b>Commit ID:</b> {{ build_list.items[0].commit_id }} </p>
+    <p><b>Date:</b> {{ build_list.items[0].start_date }} </p>
+    <p><b>Status:</b> {{ build_list.items[0].status }} </p>
+    <p><b>Log Message:</b> {{ build_list.items[0].log_message }} </p>
+  </div>
+  <div id="page_footer">
+    Choose a build by id:
+    {% for x in range(1, build_list.pages+1) %}
+        <a href="{{ url_for('build_view', page_num=x) }}">{{ x }}</a>
+    {% endfor %}
+  </div>
+  </body>
+</html>
