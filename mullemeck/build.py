@@ -109,7 +109,9 @@ def build_static_checks(directory):
     # string logs.
     lines = []
     for line in io.TextIOWrapper(build.stdout, encoding="utf-8"):
-        lines.append(line)  # or another encoding
+        lines.append(line)
+    for line in io.TextIOWrapper(build.stderr, encoding="utf-8"):
+        lines.append(line)
     logs = ' '.join(lines)
 
     success = False
