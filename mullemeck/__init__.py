@@ -1,7 +1,7 @@
 from mullemeck.routes import app, queue
-from .db import create_tables
-from .settings import validate_environment_variables, db_uri
-from .utils import add_samples_to_db
+from mullemeck.db import create_tables
+from mullemeck.settings import validate_environment_variables, db_uri
+from mullemeck.utils import add_samples_to_db
 
 
 def main(*args):

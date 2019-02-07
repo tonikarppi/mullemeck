@@ -1,11 +1,11 @@
 from flask import Flask, request, abort, render_template
-from .utils import compute_signature
-from .db import Session, Build
+from mullemeck.utils import compute_signature
+from mullemeck.db import Session, Build
 from flask_sqlalchemy import SQLAlchemy
-from .settings import github_secret, github_url
-from .build import run_build
+from mullemeck.settings import github_secret, github_url
+from mullemeck.build import run_build
 # from .email import send_mail
-from .processing import TaskQueue
+from mullemeck.processing import TaskQueue
 import subprocess
 
 
