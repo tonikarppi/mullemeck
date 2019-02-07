@@ -58,6 +58,10 @@
       bottom: 0;
       width: 100%;
       text-align: center;
+      padding: 5px;
+    }
+    a {
+      color:#FFFFFF;
     }
   </style>
 </head>
@@ -67,10 +71,10 @@
   </div>
   <div style="text-align:center; display: flex; background-color:#D64B00">
     <div id="left_div">
-      <p><h2><a href="">Build View</a><h2></p>
+      <p><h2><a href="{{ url_for('build_view', page_num=1) }}">Build View</a><h2></p>
     </div>
     <div id="right_div">
-      <p><h2><a href="">Build List</a><h2></p>
+      <p><h2><a href="{{ url_for('build_list', page_num=1) }}">Build List</a><h2></p>
     </div>
   </div>
   <div id="page_body">
@@ -83,7 +87,7 @@
   <div id="page_footer">
     Choose a build by id:
     {% for x in range(1, build_list.pages+1) %}
-        <a href="{{ url_for('build_view', page_num=x) }}" style="color:#FFFFFF">{{ x }}</a>
+        <a href="{{ url_for('build_view', page_num=x) }}">{{ x }}</a>
     {% endfor %}
   </div>
   </body>
