@@ -40,7 +40,7 @@ def run_build(repo_url, commit_id):
     session.commit()
     Session.remove()
 
-    return 0
+    return build_status, directory
 
 
 def clone_repo(repo_url, commit_id):

@@ -4,6 +4,9 @@ from .db import Session, Build
 from flask_sqlalchemy import SQLAlchemy
 from .settings import github_secret, github_url
 from .build import run_build
+from .email import send_mail
+import subprocess
+
 
 app = Flask(__name__)
 
@@ -77,7 +80,18 @@ def webhooks():
     print(commit_id)
 
     # Runs the build.
-    run_build(repository_url, commit_id)
+    build_status, directory = run_build(repository_url, commit_id)
+    # Removes the temporary directory
+    subprocess.call('rm -rf ' + directory, shell=True)
+
+    # Sends an email notification with the result of the build.
+    email_adresses = 'karppitoni@gmail.com, lars.cg.lundin@gmail.com, ' + \
+        'alxyshubt@gmail.com, isakp@kth.se, albladh@kth.se'
+    subject = 'Build for ' + commit_id + ' was ' + build_status
+    html_content = "<h1> Build for " + commit_id + \
+        "</h1><br/><h3>" + build_status + "</h3>"
+
+    send_mail(subject, email_adresses, html_content)
 
     return '', 200
 
