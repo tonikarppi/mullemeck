@@ -3,6 +3,7 @@ import subprocess
 import io
 import os
 from mullemeck.db import Session, Build
+from mullemeck.settings import clone_dir
 import datetime
 
 
@@ -54,11 +55,12 @@ def clone_repo(repo_url, commit_id):
     if not checkers.is_url(repo_url):
         raise ValueError('Url not valid')
 
-    # If /tmp/mullemeck doesn't exist, creates it
-    if not os.path.isdir('/tmp/mullemeck/'):
-        subprocess.call('mkdir /tmp/mullemeck/', shell=True)
+    # If clone_dir doesn't exist, creates it
+    if not os.path.isdir(clone_dir):
+        subprocess.call('mkdir', clone_dir, shell=True)
+
     # Sets up directory to clone the repo.
-    directory = '/tmp/mullemeck/' + commit_id + '/'
+    directory = clone_dir + commit_id + '/'
     # Creates the folder and clones the repo in it.
     subprocess.call('mkdir ' + directory, shell=True)
     build = subprocess.Popen('cd ' + directory + ' && git clone ' + repo_url,
