@@ -8,6 +8,9 @@
       margin: 0;
       padding: 0;
     }
+    a {
+      color:#FFFFFF;
+    }
     h1 {
       margin: 0;
       padding: 25px;
@@ -25,6 +28,11 @@
       width: 100%;
       /*margin-bottom: 10px;*/
     }
+    #upper_div {
+      text-align:center;
+      display: flex;
+      background-color:#D64B00;
+    }
     #left_div {
       text-align:center;
       border-bottom: 2px solid #99AAB5;
@@ -39,21 +47,52 @@
       /*background-color:#2EFF03;*/
       flex: 1;
     }
+    #page_body {
+      margin-left: 15%;
+      margin-top: 30px;
+      border-bottom: 2px solid #99AAB5;
+      border-top: 2px solid #99AAB5;
+      border-left: 2px solid #99AAB5;
+      border-right: 2px solid #99AAB5;
+      width: 60%;
+      padding: 5%;
+    }
+    #page_footer{
+      background-color:#000000;
+      height:50px;
+      color:#FFFFFF;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      padding: 5px;
+    }
   </style>
 </head>
 <body>
   <div id="title_div">
     <h1>Browse your Builds!</h1>
   </div>
-  <div style="text-align:center; display: flex; background-color:#D64B00">
+  <div id="upper_div">
     <div id="left_div">
-      <p><h2><a href="">Build View</a><h2></p>
+      <p><h2><a href="{{ url_for('build_view', page_num=1) }}">Build View</a><h2></p>
     </div>
     <div id="right_div">
       <p><h2><a href="{{ url_for('build_list', page_num=1) }}">Build List</a><h2></p>
     </div>
   </div>
   <div id="page_body">
+    <h2>Welcome!</h2>
+    To view all the information about single builds you can click on the Build View header.
+    Alternetively you can write /build_view/x in the URL bar, where x is the number of the build you want
+    to view.
+    To look through the history of builds, multiple builds can be viewed at once on the
+    build list page. To view this you can click on the Build List header or write
+    /build_list/1 in the URL bar to get to the first page of the list.
+  </div>
+  <div id="page_footer">
+    Welcome to the website!
   </div>
 </body>
 </html>
