@@ -114,6 +114,18 @@ click = ">=5.1"
 itsdangerous = ">=0.24"
 
 [[package]]
+category = "main"
+description = "Adds SQLAlchemy support to your Flask application"
+name = "flask-sqlalchemy"
+optional = false
+python-versions = "*"
+version = "2.3.2"
+
+[package.dependencies]
+Flask = ">=0.10"
+SQLAlchemy = ">=0.8.0"
+
+[[package]]
 category = "dev"
 description = "File identification library for Python"
 name = "identify"
@@ -427,7 +439,7 @@ python-versions = ">=2.7"
 version = "0.3.3"
 
 [metadata]
-content-hash = "4adba3c132a7a490f79fd84247d76c2ef9051cf68a78e9b382fbbaa2ccebc5f9"
+content-hash = "c9e2ff25a34ef93ac4e11ccd581fb0f4fca63d4b32cb9f9eed5b0033d01735c2"
 python-versions = "^3.7"
 
 [metadata.hashes]
@@ -442,6 +454,7 @@ colorama = ["05eed71e2e327246ad6b38c540c4a3117230b19679b875190486ddd2d721422d", 
 entrypoints = ["589f874b313739ad35be6e0cd7efde2a4e9b6fea91edcc34e58ecbb8dbe56d19", "c70dd71abe5a8c85e55e12c19bd91ccfeec11a6e99044204511f9ed547d48451"]
 flake8 = ["09b9bb539920776da542e67a570a5df96ff933c9a08b62cfae920bcc789e4383", "e0f8cd519cfc0072c0ee31add5def09d2b3ef6040b34dc426445c3af9b02163c"]
 flask = ["2271c0070dbcb5275fad4a82e29f23ab92682dc45f9dfbc22c02ba9b9322ce48", "a080b744b7e345ccfcbc77954861cb05b3c63786e93f2b3875e0913d44b43f05"]
+flask-sqlalchemy = ["3bc0fac969dd8c0ace01b32060f0c729565293302f0c4269beed154b46bec50b", "5971b9852b5888655f11db634e87725a9031e170f37c0ce7851cf83497f56e53"]
 identify = ["0749c74180ef0f6a3874eaa0bf89a6990a523233180e83e6f3c7c27312ac9ba3", "1cf14bc0324d83a742f558051db0c2cbe15d8b9ae1c59dfefbe38935f1d1ee31"]
 importlib-metadata = ["a17ce1a8c7bff1e8674cb12c992375d8d0800c9190177ecf0ad93e0097224095", "b50191ead8c70adfa12495fba19ce6d75f2e0275c14c5a7beb653d6799b512bd"]
 isort = ["1153601da39a25b14ddc54955dbbacbb6b2d19135386699e2ad58517953b34af", "b9c40e9750f3d77e6e4d441d8b0266cf555e7cdabdcff33c4fd06366ca761ef8", "ec9ef8f4a9bc6f71eec99e1806bfa2de401650d996c59330782b89a5555c1497"]

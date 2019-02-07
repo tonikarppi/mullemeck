@@ -36,7 +36,7 @@ If this does not work, you'll have to manually source the virtual environment th
 
 ```
 python -m mullemeck create_tables
-pythom -m mullemeck add_samples
+python -m mullemeck add_samples
 ```
 
 ### Step 5. Start the server
@@ -53,12 +53,12 @@ The documentation for this project is available here (add link).
 
 This section contains a list of the contribution by the authors of this project.
 
-### Alexander Westberg-Bladh
+### Alexander Westberg-Bladh (xobust)
 
-### Alexis Hubert
+### Alexis Hubert (SandstormVR)
 
-### Isak Peterson
+### Isak Peterson (Isak-P)
 
-### Lars Lundin
+### Lars Lundin (Larsrat)
 
-### Toni Karppi
+### Toni Karppi (tonikarppi)
