@@ -23,20 +23,22 @@
       margin: 0;
       padding: 0;
       width: 100%;
-      /*margin-bottom: 10px;*/
+    }
+    #upper_div {
+      text-align:center;
+      display: flex;
+      background-color:#D64B00;
     }
     #left_div {
       text-align:center;
       border-bottom: 2px solid #99AAB5;
       border-right: 1px solid #B7B49F;
-      /*background-color:#E8A80C;*/
       width: 50%;
     }
     #right_div {
       text-align:center;
       border-bottom: 2px solid #99AAB5;
       border-left: 1px solid #B7B49F;
-      /*background-color:#2EFF03;*/
       flex: 1;
     }
     #page_body {
@@ -78,19 +80,19 @@
     }
   </style>
   <script>
-  function fixTextBoxSize(box) {
-    box.style.height = "1px";
-    box.style.height = (25+box.scrollHeight)+"px";
-  }
+    function fixTextBoxSize(box) {
+      box.style.height = "1px";
+      box.style.height = (25+box.scrollHeight)+"px";
+    }
   </script>
 </head>
 <body>
   <div id="title_div">
     <h1> <a href="{{ url_for('index') }}"> Browse your Builds! </a> </h1>
   </div>
-  <div style="text-align:center; display: flex; background-color:#D64B00">
+  <div id = "upper_div">
     <div id="left_div">
-      <p><h2><a href="{{ url_for('build_view', page_num=1) }}">Build View</a><h2></p>
+      <p><h2>Build View<h2></p>
     </div>
     <div id="right_div">
       <p><h2><a href="{{ url_for('build_list', page_num=1) }}">Build List</a><h2></p>
