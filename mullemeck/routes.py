@@ -28,11 +28,13 @@ def build_list(page_num):
         per_page=5, error_out=True, page=page_num)
     return render_template('build_list.html', build_list=build_list)
 
+
 @app.route('/build_view/<int:page_num>')
 def build_view(page_num):
     build_list = BuildValues.query.paginate(
         per_page=1, error_out=True, page=page_num)
     return render_template('build_view.html', build_list=build_list)
+
 
 @app.route('/')
 def index():
