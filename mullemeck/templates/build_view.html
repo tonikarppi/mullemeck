@@ -42,6 +42,7 @@
     #page_body {
       margin-left: 15%;
       margin-top: 30px;
+      margin-bottom: 100px;
       border-bottom: 2px solid #99AAB5;
       border-top: 2px solid #99AAB5;
       border-left: 2px solid #99AAB5;
@@ -66,7 +67,22 @@
     #build_link{
       color: #aca8c6;
     }
+    textarea {
+      width: 100%;
+      color: #FFFFFF;
+      background-color: #36393E;
+      font-size: 15px;
+      overflow:hidden;
+      resize: none;
+      border: none;
+    }
   </style>
+  <script>
+  function fixTextBoxSize(box) {
+    box.style.height = "1px";
+    box.style.height = (25+box.scrollHeight)+"px";
+  }
+  </script>
 </head>
 <body>
   <div id="title_div">
@@ -81,11 +97,22 @@
     </div>
   </div>
   <div id="page_body">
-    <p><h2>Build ID: {{ build_list.items[0].id }} </h2></p>
-    <p><b>Commit ID:</b> {{ build_list.items[0].commit_id }} </p>
-    <p><b>Date:</b> {{ build_list.items[0].start_date }} </p>
-    <p><b>Status:</b> {{ build_list.items[0].status }} </p>
-    <p><b>Log Message:</b> {{ build_list.items[0].log_message }} </p>
+    <p>
+      <h2>Build ID: {{ build_list.items[0].id }} </h2>
+    </p>
+    <p>
+      <b>Commit ID:</b> {{ build_list.items[0].commit_id }}
+    </p>
+    <p>
+      <b>Date:</b> {{ build_list.items[0].start_date }}
+    </p>
+    <p>
+      <b>Status:</b> {{ build_list.items[0].status }}
+    </p>
+    <p>
+      <h3>Log Message</h3>
+    </p>
+    <textarea readonly onkeyup="textAreaAdjust(this)">{{build_list.items[0].log_message}}</textarea>
   </div>
   <div id="page_footer">
     Choose a build by id:
