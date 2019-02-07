@@ -56,6 +56,13 @@ This section contains a list of the contribution by the authors of this project.
 ### Alexander Westberg-Bladh (xobust)
 
 ### Alexis Hubert (SandstormVR)
+* Implemented :
+  * functions clone_repo, build_static_checks and build_tests
+  * function that runs the whole build and create a new entry in the database
+  * tests for the build functions
+  * some of the actions started when a webhooks is received
+* Various fixes
+* Active participation in reviewing other contributors' code.
 
 ### Isak Peterson (Isak-P)
 
