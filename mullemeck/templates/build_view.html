@@ -58,10 +58,13 @@
       bottom: 0;
       width: 100%;
       text-align: center;
-      padding: 5px;
+      padding-top: 8px;
     }
     a {
       color:#FFFFFF;
+    }
+    #build_link{
+      color: #aca8c6;
     }
   </style>
 </head>
@@ -87,7 +90,7 @@
   <div id="page_footer">
     Choose a build by id:
     {% for x in range(1, build_list.pages+1) %}
-        <a href="{{ url_for('build_view', page_num=x) }}">{{ x }}</a>
+        <a id="build_link" href="{{ url_for('build_view', page_num=x) }}">{{ x }}</a>
     {% endfor %}
   </div>
   </body>
