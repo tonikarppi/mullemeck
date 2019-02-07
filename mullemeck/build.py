@@ -133,7 +133,7 @@ def build_tests(directory):
                              stderr=subprocess.PIPE)
     # Waits for the process to end
     build.wait()
-    success = build.returncode
+    status = build.returncode
 
     # Reads the output and saves it in lines, then concatenates it in single
     # string logs.
@@ -144,10 +144,10 @@ def build_tests(directory):
         lines.append(line)
     logs = ' '.join(lines)
 
-    status = False
+    success = False
     # If the shell command returns 0 it means that no errors occured. Every
     # other value sets status to False.
-    if success == 0:
-        status = True
+    if status == 0:
+        success = True
 
-    return status, logs
+    return success, logs
