@@ -23,6 +23,8 @@ def test_paginate_number_list():
     assert(paginated_list.list[3][0] == 15)
     assert(paginated_list.list[3][1] == 16)
     assert(paginated_list.list[3][2] == 17)
+    assert(paginated_list.number_of_items == 18)
+    assert(paginated_list.number_of_pages == 4)
 
 
 def test_paginate_single_items():
@@ -34,3 +36,5 @@ def test_paginate_single_items():
     assert(paginated_list.list[2][0] == 2)
     assert(paginated_list.list[3][0] == 3)
     assert(paginated_list.list[4][0] == 4)
+    assert(paginated_list.number_of_items == 5)
+    assert(paginated_list.number_of_pages == 5)
