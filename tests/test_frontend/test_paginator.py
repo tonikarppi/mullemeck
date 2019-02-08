@@ -4,7 +4,7 @@ from mullemeck.paginator import Paginator
 def test_paginate_number_list():
     list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
     per_page = 5
-    paginated_list = Paginator(list, per_page)
+    paginated_list = Paginator(list, per_page, 1)
     assert(paginated_list.list[0][0] == 0)
     assert(paginated_list.list[0][1] == 1)
     assert(paginated_list.list[0][2] == 2)
@@ -30,7 +30,7 @@ def test_paginate_number_list():
 def test_paginate_single_items():
     list = [0, 1, 2, 3, 4]
     per_page = 1
-    paginated_list = Paginator(list, per_page)
+    paginated_list = Paginator(list, per_page, 1)
     assert(paginated_list.list[0][0] == 0)
     assert(paginated_list.list[1][0] == 1)
     assert(paginated_list.list[2][0] == 2)
