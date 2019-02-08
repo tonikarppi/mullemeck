@@ -1,7 +1,7 @@
 language: python
 dist: xenial
 python:
-    - '3.7'
+    - '3.6'
 cache:
     pip: true
     directories:
@@ -11,7 +11,7 @@ before_install:
     - pip install pip -U
     - pip install poetry
 install:
-    - poetry install -v
+    - poetry install -v --no-dev
 script:
     - pytest -q tests/
     - pre-commit run --all-files

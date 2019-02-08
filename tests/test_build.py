@@ -1,6 +1,7 @@
 from mullemeck.build import clone_repo
 from mullemeck.build import build_static_checks
 from mullemeck.build import build_tests
+from mullemeck.build import build_dependecies
 import os
 import subprocess
 import pytest
@@ -27,6 +28,12 @@ def test_clone_repo():
     # Remove the cloned repo to be able to run tests again. Otherwise throws
     # error because the path already exists and diretory not empty.
     subprocess.call('rm -rf /tmp/mullemeck/latestSnake', shell=True)
+
+
+def test_build_dependencies():
+    success, logs = build_dependecies('random/path/to/nowhere')
+    assert not success
+    assert logs != ''
 
 
 def test_build_static_checks():

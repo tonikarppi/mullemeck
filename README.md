@@ -56,13 +56,14 @@ This section contains a list of the contribution by the authors of this project.
 ### Alexander Westberg-Bladh (xobust)
 
 ### Alexis Hubert (SandstormVR)
-* Implemented :
-  * functions clone_repo, build_static_checks and build_tests
-  * function that runs the whole build and create a new entry in the database
-  * tests for the build functions
-  * some of the actions started when a webhooks is received
-* Various fixes
-* Active participation in reviewing other contributors' code.
+
+-   Implemented :
+    -   functions clone_repo, build_static_checks and build_tests
+    -   function that runs the whole build and create a new entry in the database
+    -   tests for the build functions
+    -   some of the actions started when a webhooks is received
+-   Various fixes
+-   Active participation in reviewing other contributors' code.
 
 ### Isak Peterson (Isak-P)
 * Implemented :
@@ -73,3 +74,10 @@ This section contains a list of the contribution by the authors of this project.
 ### Lars Lundin (Larsrat)
 
 ### Toni Karppi (tonikarppi)
+
+-   Implemented
+    -   The Github webhook endpoint + HMAC verification
+    -   Dockerfile
+    -   Travis CI integration
+    -   ORM
+-   Added instructions for setting up the project in the README.
