@@ -1,7 +1,6 @@
 from flask import Flask, request, abort, render_template
 from mullemeck.utils import compute_signature
 from mullemeck.db import Session, Build
-from flask_sqlalchemy import SQLAlchemy
 from mullemeck.settings import github_secret, github_url
 from mullemeck.build import run_build
 # from .email import send_mail
@@ -14,18 +13,6 @@ app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../dev.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-db = SQLAlchemy(app)
-
-
-class BuildValues(db.Model):
-    __tablename__ = 'build'
-    id = db.Column(db.Integer, primary_key=True)
-    commit_id = db.Column(db.String, nullable=False)
-    start_date = db.Column(db.DateTime, nullable=False)
-    status = db.Column(
-        db.Enum('processing', 'failed', 'success'), nullable=False)
-    log_message = db.Column(db.UnicodeText, default='')
 
 
 def process_commit(commit_id, repository_url):
