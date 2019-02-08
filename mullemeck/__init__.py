@@ -1,7 +1,7 @@
-from mullemeck.routes import app
-from .db import create_tables
-from .settings import validate_environment_variables, db_uri
-from .utils import add_samples_to_db
+from mullemeck.routes import app, queue
+from mullemeck.db import create_tables
+from mullemeck.settings import validate_environment_variables, db_uri
+from mullemeck.utils import add_samples_to_db
 
 
 def main(*args):
@@ -15,9 +15,13 @@ def main(*args):
         print(f'Adding sample entries to: {db_uri}')
         add_samples_to_db()
     elif arg == 'develop':
+        queue.start()
         app.run(debug=True)
+        queue.stop()
     elif arg == 'production':
-        app.run()
+        queue.start()
+        app.run(host="0.0.0.0")
+        queue.stop()
     else:
         raise ValueError(f'Unexpected argument: {arg}')
 

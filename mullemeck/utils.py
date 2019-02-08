@@ -1,6 +1,6 @@
 import hmac
 import hashlib
-from .db import Session, Build
+from mullemeck.db import Session, Build
 from datetime import datetime
 
 
