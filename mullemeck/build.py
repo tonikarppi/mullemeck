@@ -56,7 +56,7 @@ def clone_repo(repo_url, commit_id):
         raise ValueError('Url not valid')
 
     # If /tmp/mullemeck doesn't exist, creates it
-    if not os.path.isdir('/tmp/mullemeck/'):
+    if not os.path.isdir(clone_dir):
         subprocess.call('mkdir ' + clone_dir, shell=True)
     # Sets up directory to clone the repo.
     directory = clone_dir + commit_id + '/'
