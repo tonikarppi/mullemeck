@@ -3,6 +3,7 @@ from mullemeck.utils import compute_signature
 from mullemeck.db import Session, Build
 from mullemeck.settings import github_secret, github_url
 from mullemeck.build import run_build
+from mullemeck.mail import notify_build
 # from .email import send_mail
 from mullemeck.processing import TaskQueue
 import subprocess
@@ -21,14 +22,7 @@ def process_commit(commit_id, repository_url):
     # Removes the temporary directory
     subprocess.call('rm -rf ' + directory, shell=True)
 
-    # Sends an email notification with the result of the build.
-    # email_adresses = 'karppitoni@gmail.com, lars.cg.lundin@gmail.com, ' + \
-    #     'alxyshubt@gmail.com, isakp@kth.se, albladh@kth.se'
-    # subject = 'Build for ' + commit_id + ' was ' + build_status
-    # html_content = "<h1> Build for " + commit_id + \
-    #     "</h1><br/><h3>" + build_status + "</h3>"
-
-    # send_mail(subject, email_adresses, html_content)
+    notify_build(app, commit_id)
 
 
 queue = TaskQueue(process_commit)
@@ -45,6 +39,14 @@ def build_list(page_num):
 def build_view(page_num):
     session = Session()
     build_list = Paginator(session.query(Build).all(), 1, page_num)
+    return render_template('build_view.html', build_list=build_list)
+
+
+@app.route('/commit_view/<string:commit>')
+def commit_view(commit):
+    session = Session()
+    build_list = session.query(Build) \
+        .filter(Build.commit_id == commit)
     return render_template('build_view.html', build_list=build_list)
 
 
