@@ -7,6 +7,41 @@ import subprocess
 import pytest
 
 
+def create_repos_for_unit_tests():
+    """
+    This function clones simple repos to run unit tests on the build.
+    It clones mullemeck-unit-tests repo and returns the directories in which
+    each relevant repo state is.
+    """
+    directories = {}
+    # repo with nothing but little dependecies to install
+    suc, logs, dir = clone_repo('https://github.com/SandstormVR/\
+                                mullemeck-unit-tests.git',
+                                '7ffb0ac9fe3fe05abdf688501d047ce501849a40')
+    directories['dir_dependecies_basics'] = dir
+    # Repo with pre-commit satisfied and no tests.
+    suc, logs, dir = clone_repo('https://github.com/SandstormVR/\
+                                mullemeck-unit-tests.git',
+                                'f676b450172207f1e65f5a7e0574c0cde7baba42')
+    directories['dir_hello_world_no_tests'] = dir
+    # Repo with pre_commit error and no tests
+    suc, logs, dir = clone_repo('https://github.com/SandstormVR/\
+                                mullemeck-unit-tests.git',
+                                'a82b9b829d352901e0f37702f87186ca3234d35a')
+    directories['dir_fail_hello_world_no_tests'] = dir
+    # Repo with valid test. Pre-commit runs
+    suc, logs, dir = clone_repo('https://github.com/SandstormVR/\
+                                mullemeck-unit-tests.git',
+                                '25e0e252636172a2d38b4ca8b3ada3c60b211596')
+    directories['dir_hello_world_success_test'] = dir
+    suc, logs, dir = clone_repo('https://github.com/SandstormVR/\
+                                mullemeck-unit-tests.git',
+                                '76bfd501cf59e6b9380abab5fc508208cf7a1692')
+    directories['dir_hello_world_fail_test'] = dir
+
+    return directories
+
+
 def test_clone_repo():
     """
     Tests the clone_repo() function with an invalid url, a valid url that is
