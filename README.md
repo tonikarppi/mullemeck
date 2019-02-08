@@ -36,7 +36,7 @@ If this does not work, you'll have to manually source the virtual environment th
 
 ```
 python -m mullemeck create_tables
-pythom -m mullemeck add_samples
+python -m mullemeck add_samples
 ```
 
 ### Step 5. Start the server
@@ -53,12 +53,27 @@ The documentation for this project is available here (add link).
 
 This section contains a list of the contribution by the authors of this project.
 
-### Alexander Westberg-Bladh
+### Alexander Westberg-Bladh (xobust)
 
-### Alexis Hubert
+### Alexis Hubert (SandstormVR)
 
-### Isak Peterson
+-   Implemented :
+    -   functions clone_repo, build_static_checks and build_tests
+    -   function that runs the whole build and create a new entry in the database
+    -   tests for the build functions
+    -   some of the actions started when a webhooks is received
+-   Various fixes
+-   Active participation in reviewing other contributors' code.
 
-### Lars Lundin
+### Isak Peterson (Isak-P)
 
-### Toni Karppi
+### Lars Lundin (Larsrat)
+
+### Toni Karppi (tonikarppi)
+
+-   Implemented
+    -   The Github webhook endpoint + HMAC verification
+    -   Dockerfile
+    -   Travis CI integration
+    -   ORM
+-   Added instructions for setting up the project in the README.
