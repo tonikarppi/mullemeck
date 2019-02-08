@@ -45,6 +45,14 @@ python -m mullemeck add_samples
 python -m mullemeck develop
 ```
 
+## Testing the project
+
+This project uses pytest for its testing framework.
+
+```
+pytest tests/
+```
+
 ## Documentation
 
 The documentation for this project is available here (add link).
