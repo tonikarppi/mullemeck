@@ -55,19 +55,21 @@ def clone_repo(repo_url, commit_id):
     if not checkers.is_url(repo_url):
         raise ValueError('Url not valid')
 
-    # If clone_dir doesn't exist, creates it
+    # If /tmp/mullemeck doesn't exist, creates it
     if not os.path.isdir(clone_dir):
-        subprocess.call(['mkdir', clone_dir], shell=True)
-
+        subprocess.call('mkdir ' + clone_dir, shell=True)
     # Sets up directory to clone the repo.
     directory = clone_dir + commit_id + '/'
+    command1 = 'cd ' + directory
+    # clones in the local directory
+    command2 = 'git clone ' + repo_url + ' .'
+    command3 = 'git checkout ' + commit_id
     # Creates the folder and clones the repo in it.
     subprocess.call('mkdir ' + directory, shell=True)
-    build = subprocess.Popen('cd ' + directory + ' && git clone ' + repo_url,
-                             shell=True, stdout=subprocess.PIPE,
-                             stderr=subprocess.PIPE)
+    build = subprocess.Popen(command1 + ' && ' + command2, shell=True,
+                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     build.wait(timeout=60)
-
+    subprocess.call(command1 + ' && ' + command3, shell=True)
     status = build.returncode
 
     lines = []
@@ -85,7 +87,7 @@ def clone_repo(repo_url, commit_id):
 
     # If the clone couldn't be built we don't want to keep the directory.
     if not success:
-        subprocess.call('rmdir '+directory, shell=True)
+        subprocess.call('rm -rf ' + directory, shell=True)
 
     return success, logs, directory
 

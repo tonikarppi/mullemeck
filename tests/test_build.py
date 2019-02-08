@@ -20,7 +20,8 @@ def test_clone_repo():
     success, logs, dir = clone_repo('https://google.com', 'commit')
     assert not success
     assert not os.path.isdir(dir)
-    # asserts that the clone is successful (and checks that the path exists)
+    # asserts that with valid repo but invalid commit_id it won't be successful
+    # (and checks that the path exists)
     success, logs, dir = clone_repo('https://github.com/hexadeciman/Snake.git',
                                     'latestSnake')
     assert success
@@ -28,6 +29,13 @@ def test_clone_repo():
     # Remove the cloned repo to be able to run tests again. Otherwise throws
     # error because the path already exists and diretory not empty.
     subprocess.call('rm -rf /tmp/mullemeck/latestSnake', shell=True)
+
+    succes, logs, dir = clone_repo('https://github.com/hexadeciman/Snake.git',
+                                   'e36d474082a8bddb0f04d114a24bdbbfc429a41b')
+    print(logs)
+    assert success
+    assert os.path.isdir(dir)
+    subprocess.call('rm -rf ' + dir, shell=True)
 
 
 def test_build_dependencies():
