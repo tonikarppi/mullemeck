@@ -78,18 +78,18 @@
       <p><h2><a href="{{ url_for('build_list', page_num=1) }}">Build List</a><h2></p>
     </div>
   </div>
-  {% for build in build_list.items %}
-    <div id="page_body">
+  {% for build in build_list.list[build_list.pointer-1] %}
+  <div id="page_body">
       <p> Build: {{ build.id }} </p>
-      <p> {{ build.log_message }} </p>
-      <p> {{ build.status }} </p>
+      <p> {{ build.commit_id }} </p>
+      <p> {{ build.start_date }} </p>
       <a id="build_link" href="{{ url_for('build_view', page_num=build.id) }}"> Open this build in buildview </a>
     </div>
   {% endfor %}
   <div id="page_footer"> Pages:
-    {% for build in build_list.iter_pages() %}
-        <a id="build_link" href="{{ url_for('build_list', page_num=build) }}">{{ build }}</a>
-    {% endfor %}
+      {% for x in range(1, build_list.number_of_pages+1) %}
+          <a id="build_link" href="{{ url_for('build_list', page_num=x) }}">{{ x }}</a>
+      {% endfor %}
   </div>
 </body>
 </html>
