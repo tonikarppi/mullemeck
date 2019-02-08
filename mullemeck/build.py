@@ -57,7 +57,7 @@ def clone_repo(repo_url, commit_id):
 
     # If clone_dir doesn't exist, creates it
     if not os.path.isdir(clone_dir):
-        subprocess.call('mkdir', clone_dir, shell=True)
+        subprocess.call(['mkdir', clone_dir], shell=True)
 
     # Sets up directory to clone the repo.
     directory = clone_dir + commit_id + '/'
