@@ -7,6 +7,7 @@ from mullemeck.build import run_build
 # from .email import send_mail
 from mullemeck.processing import TaskQueue
 import subprocess
+from mullemeck.paginator import Paginator
 
 
 app = Flask(__name__)
@@ -48,8 +49,10 @@ queue = TaskQueue(process_commit)
 
 @app.route('/build_list/<int:page_num>')
 def build_list(page_num):
-    build_list = BuildValues.query.paginate(
-        per_page=5, error_out=True, page=page_num)
+    session = Session()
+#    build_list = BuildValues.query.paginate(
+#        per_page=5, error_out=True, page=page_num)
+    build_list = Paginator(session.query(Build).all(), 5, page_num)
     return render_template('build_list.html', build_list=build_list)
 
 
