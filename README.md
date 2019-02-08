@@ -45,6 +45,14 @@ python -m mullemeck add_samples
 python -m mullemeck develop
 ```
 
+## Testing the project
+
+This project uses pytest for its testing framework.
+
+```
+pytest tests/
+```
+
 ## Documentation
 
 The documentation for this project is available here (add link).
@@ -66,6 +74,11 @@ This section contains a list of the contribution by the authors of this project.
 -   Active participation in reviewing other contributors' code.
 
 ### Isak Peterson (Isak-P)
+* Implemented :
+  * Various sections of the frontend 
+  * Various sections of the frontend database logic
+* Various fixes
+* Active participation in reviewing other contributors' code.
 
 ### Lars Lundin (Larsrat)
 
