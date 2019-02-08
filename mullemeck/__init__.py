@@ -20,7 +20,7 @@ def main(*args):
         queue.stop()
     elif arg == 'production':
         queue.start()
-        app.run()
+        app.run(host="0.0.0.0")
         queue.stop()
     else:
         raise ValueError(f'Unexpected argument: {arg}')
