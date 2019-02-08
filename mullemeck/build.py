@@ -120,7 +120,7 @@ def build_dependecies(directory):
 
     return success, logs
 
- 
+
 def build_static_checks(directory):
     """
     This function runs static checks using the pre-commit configuration of the
