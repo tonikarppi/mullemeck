@@ -84,8 +84,11 @@ def webhooks():
     if github_url != repository_url:
         abort(403)
 
-    commit_id = req_json['head_commit']['id']
+    commit = req_json['head_commit']
+    commit_id = commit['id']
+    commiter_email = commit['committer']['email']
     print(commit_id)
+    print(commiter_email)
 
     queue.push(commit_id=commit_id, repository_url=repository_url)
 
