@@ -65,6 +65,10 @@ This section contains a list of the contribution by the authors of this project.
 * Active participation in reviewing other contributors' code.
 
 ### Isak Peterson (Isak-P)
+* Implemented :
+  * Various sections of the front-end
+* Various fixes
+* Active participation in reviewing other contributors' code.
 
 ### Lars Lundin (Larsrat)
 
