@@ -1,4 +1,4 @@
-from mullemeck import email
+from mullemeck import mail as email
 from mullemeck.routes import app
 from flask_mail import Mail
 
