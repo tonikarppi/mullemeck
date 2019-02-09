@@ -20,7 +20,8 @@ def send_mail(app, subject, html_content, recipient):
         mail.send(message)
 
 
-def notify_build(app, commit_id):
+def notify_build(app, commit_id, committer_email):
+    # TODO: Use committer email
     session = Session()
     build = session.query(Build) \
         .filter(commit_id=commit_id) \
