@@ -45,6 +45,14 @@ python -m mullemeck add_samples
 python -m mullemeck develop
 ```
 
+## Interacting with the server
+
+The development server runs on localhost:5000 by default.
+
+When the server is running, the website where the builds can be browsed is available at the server root.
+
+The server accepts JSON webhook requests from Github at the /webhook route.
+
 ## Testing the project
 
 This project uses pytest for its testing framework.
