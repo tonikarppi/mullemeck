@@ -30,8 +30,8 @@ def test_clone_repo():
     # error because the path already exists and diretory not empty.
     subprocess.call('rm -rf /tmp/mullemeck/latestSnake', shell=True)
 
-    succes, logs, dir = clone_repo('https://github.com/hexadeciman/Snake.git',
-                                   'e36d474082a8bddb0f04d114a24bdbbfc429a41b')
+    success, logs, dir = clone_repo('https://github.com/hexadeciman/Snake.git',
+                                    'e36d474082a8bddb0f04d114a24bdbbfc429a41b')
     print(logs)
     assert success
     assert os.path.isdir(dir)
