@@ -20,4 +20,5 @@ class TaskQueue:
         self.p.start()
 
     def stop(self):
-        self.p.close()
+        if self.p.is_alive():
+            self.p.terminate()
