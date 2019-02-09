@@ -1,3 +1,7 @@
+"""
+This module contains tests that deal with the database and the ORM.
+"""
+
 import pytest
 from mullemeck.db import Build, Base
 from sqlalchemy.exc import IntegrityError
@@ -12,6 +16,11 @@ Session = sessionmaker()
 
 @pytest.fixture(scope='module')
 def connection():
+    """
+    Creates a fixture for a database connection. This connection is kept
+    open for the lifetime of all the tests in this module. After the tests
+    have finished executing, the connection will automatically close.
+    """
     Base.metadata.create_all(engine)
     connection = engine.connect()
     yield connection
@@ -20,6 +29,11 @@ def connection():
 
 @pytest.fixture(scope='function')
 def session(connection):
+    """
+    Creates a fixture for a database session. Each test function will receive
+    their own session object. After a test has finished, the changes made by
+    the session will be rolled back to its starting state.
+    """
     transaction = connection.begin()
     session = Session(bind=connection)
     yield session
@@ -48,6 +62,10 @@ def session(connection):
     }]
 )
 def test_build_model_success(session, build_args):
+    """
+    Tests that the `Build` model correctly takes in the required information,
+    and persists it in the database.
+    """
     build = Build(**build_args)
     session.add(build)
     assert session.query(Build).count() == 1
@@ -85,6 +103,10 @@ def test_build_model_success(session, build_args):
         'status': 'fake'
     }])
 def test_build_model_failure(session, build_args):
+    """
+    Tests for expected exceptional behavior of the `Build` model, if the
+    contract for the accepted values is broken.
+    """
     build = Build(**build_args)
     session.add(build)
     with pytest.raises(IntegrityError):
