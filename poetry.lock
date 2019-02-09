@@ -139,18 +139,6 @@ blinker = "*"
 
 [[package]]
 category = "main"
-description = "Adds SQLAlchemy support to your Flask application"
-name = "flask-sqlalchemy"
-optional = false
-python-versions = "*"
-version = "2.3.2"
-
-[package.dependencies]
-Flask = ">=0.10"
-SQLAlchemy = ">=0.8.0"
-
-[[package]]
-category = "main"
 description = "File identification library for Python"
 name = "identify"
 optional = false
@@ -482,7 +470,7 @@ python-versions = ">=2.7"
 version = "0.3.3"
 
 [metadata]
-content-hash = "956e1cfd79cf16e8926bf3d47e0aa70073cffe015ec0d0209b7f6785d8e6968a"
+content-hash = "61cc794842c0f736159be17b8ffa4e03d4155b5330a002f4316a66dc2bbedece"
 python-versions = "^3.6.6"
 
 [metadata.hashes]
@@ -499,7 +487,6 @@ entrypoints = ["589f874b313739ad35be6e0cd7efde2a4e9b6fea91edcc34e58ecbb8dbe56d19
 flake8 = ["c3ba1e130c813191db95c431a18cb4d20a468e98af7a77e2181b68574481ad36", "fd9ddf503110bf3d8b1d270e8c673aab29ccb3dd6abf29bae1f54e5116ab4a91"]
 flask = ["2271c0070dbcb5275fad4a82e29f23ab92682dc45f9dfbc22c02ba9b9322ce48", "a080b744b7e345ccfcbc77954861cb05b3c63786e93f2b3875e0913d44b43f05"]
 flask-mail = ["22e5eb9a940bf407bcf30410ecc3708f3c56cc44b29c34e1726fe85006935f41"]
-flask-sqlalchemy = ["3bc0fac969dd8c0ace01b32060f0c729565293302f0c4269beed154b46bec50b", "5971b9852b5888655f11db634e87725a9031e170f37c0ce7851cf83497f56e53"]
 identify = ["0749c74180ef0f6a3874eaa0bf89a6990a523233180e83e6f3c7c27312ac9ba3", "1cf14bc0324d83a742f558051db0c2cbe15d8b9ae1c59dfefbe38935f1d1ee31"]
 importlib-metadata = ["a17ce1a8c7bff1e8674cb12c992375d8d0800c9190177ecf0ad93e0097224095", "b50191ead8c70adfa12495fba19ce6d75f2e0275c14c5a7beb653d6799b512bd"]
 importlib-resources = ["6e2783b2538bd5a14678284a3962b0660c715e5a0f10243fd5e00a4b5974f50b", "d3279fd0f6f847cced9f7acc19bd3e5df54d34f93a2e7bb5f238f81545787078"]
