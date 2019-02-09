@@ -35,4 +35,4 @@ def create_tables():
     Base.metadata.create_all(engine)
 
 
-__all__ = ['Session', 'Build', 'create_tables']
+__all__ = ['Session', 'Build', 'Base', 'create_tables']
