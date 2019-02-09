@@ -1,3 +1,7 @@
+"""
+This module contains utilities that function as helpers to other modules.
+"""
+
 import hmac
 import hashlib
 from mullemeck.db import Session, Build
@@ -5,11 +9,20 @@ from datetime import datetime
 
 
 def compute_signature(secret, data):
+    """
+    Computes the HMAC signature using the same format as Github.
+    The string `secret`is used as the key in the HMAC algorithm.
+    The bytearray `data` is the data that gets hashed in the HMAC algorithm.
+    """
     secret_bytes = bytes(secret, 'utf-8')
     return 'sha1=' + hmac.new(secret_bytes, data, hashlib.sha1).hexdigest()
 
 
 def add_samples_to_db():
+    """
+    Adds some sample objects to the database. This is useful for
+    demoing without having to have real data present in the database.
+    """
     session = Session()
     session.add_all([
         Build(
