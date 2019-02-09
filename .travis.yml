@@ -28,4 +28,4 @@ deploy:
     github-token:
         secure: Old+5mSNI4SSwm8jBXU/ehnLWLFXtDEDwJKxWS2Zb1Zsw+CUTsiLddD4u0ALRSwHLTrkfaf+Ks7iamO+eX0KCUFP1wMdTrucNDWsSJbTCYoeg+A8MWQh+Wpad1QABYB9g056xoHtp8XRhATlHKotUZ9tkhVxKDHDSIH2ncmjaeWrPIjxC2KJx8hnB1lUaZFWLuCiMRn6AMX+Eyof+OSTjLOJad0MUW+NTgUDyQo8dbl7XAVkH7UinwLBbHhi1XmYHLpt3IjeXJGZHfDI/HodBchRZyA8IJQ1RVw1UVyu4hrhtv5MEnUaOQc9Zuluf/vsEL49M+0jqafeNBfMSb4H3ks9cevXgtEJXE78t50Mq8ZHREBjfzNw9aRZ/ZVpzgWV3lDmG//bKx+IFKqmRwEnXIPC2eHD+8EoDgW1yADXVwMp1vG9yFWBNJ11ydKebkA9BuTay0Roh04FcfqTB170kaW1LYm7BRJL+HiGRxALx6vmNKDhdcVSKvVG0d/BrXfb3aKqq4fOhLRVaUHfhT0ujWo9+RiqhHDkTDneDeNdP51acR5GxN8MBr7NgjAkgnaaNH9ND3hSNTUWfFyotFfp8eer46dhwcGlutDz5R2ERiJNdo1JOwdCZW1zOTRq/Ord3JweoVvgqC0u9gp7Bbhkf2Fdd3ChhE5JgFzEHt7NFpk=
     on:
-        branch: gh-pages
+        branch: master
