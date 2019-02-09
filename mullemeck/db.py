@@ -1,3 +1,10 @@
+"""
+This module deals with the database related functionality.
+
+The components from the module that clients will probably use
+the most are the `Build` model and the `Session` registry object.
+"""
+
 from mullemeck.settings import db_uri
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
@@ -32,6 +39,11 @@ Session = scoped_session(sessionmaker(bind=engine))
 
 
 def create_tables():
+    """
+    Creates the tables on the database, which are representations
+    for the model objects defined in this module.
+    This function requires that the engine was given a valid database URI.
+    """
     Base.metadata.create_all(engine)
 
 
