@@ -1,3 +1,8 @@
+"""
+Contains values passed in from the local environment, and helpers that work
+with them.
+"""
+
 import os
 from dotenv import load_dotenv
 
@@ -13,10 +18,18 @@ db_uri = db_uri if db_uri else 'sqlite:///dev.db'
 
 
 def assert_truthy(value, error_message):
+    """
+    Identical to the regular `assert` statement, but allows for splitting
+    across multiple lines because of the parentheses.
+    """
     assert value, error_message
 
 
 def validate_environment_variables():
+    """
+    Throws an `AssertionError` if any of the required environment variables
+    are not correctly provided.
+    """
 
     assert os.access(os.path.dirname(clone_dir), os.W_OK), \
         "Application does not have acess to that path"
