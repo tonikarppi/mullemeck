@@ -59,7 +59,7 @@ def clone_repo(repo_url, commit_id):
     if not os.path.isdir(clone_dir):
         subprocess.call('mkdir ' + clone_dir, shell=True)
     # Sets up directory to clone the repo.
-    directory = clone_dir + commit_id + '/'
+    directory = clone_dir + '/' + commit_id + '/'
     command1 = 'cd ' + directory
     # clones in the local directory
     command2 = 'git clone ' + repo_url + ' .'
