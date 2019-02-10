@@ -13,7 +13,7 @@ github_url = os.getenv('GITHUB_URL', default=None)
 website_url = os.getenv('MULLE_URL', default="localhost")
 notifictaion_email = os.getenv('MULLE_EMAIL', default="mulle@localhost")
 db_uri = os.getenv('DB_URI', default=None)
-clone_dir = os.getenv("MULLE_CLONE_DIR", default="/tmp/mullemeck/")
+clone_dir = os.getenv("MULLE_CLONE_DIR", default="/tmp/mullemeck")
 db_uri = db_uri if db_uri else 'sqlite:///dev.db'
 
 
@@ -32,7 +32,7 @@ def validate_environment_variables():
     """
 
     assert os.access(os.path.dirname(clone_dir), os.W_OK), \
-        "Application does not have acess to that path"
+        "Application does not have access to that path"
 
     assert_truthy(
         github_secret, 'GITHUB_SECRET environment variable required.')
