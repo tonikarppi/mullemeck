@@ -90,8 +90,8 @@ This section contains a list of the contribution by the authors of this project.
 ### Isak Peterson (Isak-P)
 
 -   Implemented :
-    -   Various sections of the frontend
-    -   Various sections of the frontend database logic
+    -   Various sections of the build webpage and it's connection to the ORM
+    -   Tests for build functions
 -   Various fixes
 -   Active participation in reviewing other contributors' code.
 
