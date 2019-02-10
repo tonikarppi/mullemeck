@@ -1,7 +1,7 @@
 from mullemeck.build import clone_repo
 from mullemeck.build import build_static_checks
 from mullemeck.build import build_tests
-from mullemeck.build import build_dependecies
+from mullemeck.build import build_dependencies
 import os
 import subprocess
 import pytest
@@ -14,11 +14,11 @@ def create_repos_for_unit_tests():
     each relevant repo state is.
     """
     directories = {}
-    # repo with nothing but little dependecies to install
+    # repo with nothing but little dependencies to install
     suc, logs, dir = clone_repo(
         'https://github.com/SandstormVR/mullemeck-unit-tests',
         '7ffb0ac9fe3fe05abdf688501d047ce501849a40')
-    directories['dir_dependecies_basics'] = dir
+    directories['dir_dependencies_basics'] = dir
     # Repo with pre-commit satisfied and no tests.
     suc, logs, dir = clone_repo(
         'https://github.com/SandstormVR/mullemeck-unit-tests',
@@ -38,8 +38,11 @@ def create_repos_for_unit_tests():
         'https://github.com/SandstormVR/mullemeck-unit-tests',
         '76bfd501cf59e6b9380abab5fc508208cf7a1692')
     directories['dir_hello_world_fail_test'] = dir
-
+    print('Hello world')
     return directories
+
+
+directories_unit_tests = create_repos_for_unit_tests()
 
 
 def test_clone_repo():
@@ -67,16 +70,19 @@ def test_clone_repo():
 
     success, logs, dir = clone_repo('https://github.com/hexadeciman/Snake',
                                     'e36d474082a8bddb0f04d114a24bdbbfc429a41b')
-    print(logs)
     assert success
     assert os.path.isdir(dir)
     subprocess.call('rm -rf ' + dir, shell=True)
 
 
 def test_build_dependencies():
-    directories = create_repos_for_unit_tests()
 
-    success, logs = build_dependecies(directories['dir_dependecies_basics'])
+    success, logs = build_dependencies('path/to/nowhere')
+    assert not success
+    assert logs != ''
+
+    success, logs = build_dependencies(
+        directories_unit_tests['dir_dependencies_basics'])
     assert success
     assert logs != ''
 
@@ -91,3 +97,12 @@ def test_build_tests():
     success, logs = build_tests('random/path/to/nowhere')
     assert not success
     assert logs != ''
+
+
+def test_remove_directories_unit_tests():
+    """
+    This function is executed in last as it removes all repos cloned for unit
+    testing purposes
+    """
+    for x in directories_unit_tests:
+        subprocess.call('rm -rf ' + directories_unit_tests[x], shell=True)
