@@ -96,6 +96,11 @@ This section contains a list of the contribution by the authors of this project.
 -   Active participation in reviewing other contributors' code.
 
 ### Lars Lundin (Larsrat)
+-  Implemented :
+    * Paginator class for frontend
+    * Parts of frontend logic, design and structure
+-   Bugfixes
+-   Reviewing other contributers' code.
 
 ### Toni Karppi (tonikarppi)
 
