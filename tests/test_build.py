@@ -15,28 +15,28 @@ def create_repos_for_unit_tests():
     """
     directories = {}
     # repo with nothing but little dependecies to install
-    suc, logs, dir = clone_repo('https://github.com/SandstormVR/\
-                                mullemeck-unit-tests.git',
-                                '7ffb0ac9fe3fe05abdf688501d047ce501849a40')
+    suc, logs, dir = clone_repo(
+        'https://github.com/SandstormVR/mullemeck-unit-tests',
+        '7ffb0ac9fe3fe05abdf688501d047ce501849a40')
     directories['dir_dependecies_basics'] = dir
     # Repo with pre-commit satisfied and no tests.
-    suc, logs, dir = clone_repo('https://github.com/SandstormVR/\
-                                mullemeck-unit-tests.git',
-                                'f676b450172207f1e65f5a7e0574c0cde7baba42')
+    suc, logs, dir = clone_repo(
+        'https://github.com/SandstormVR/mullemeck-unit-tests',
+        'f676b450172207f1e65f5a7e0574c0cde7baba42')
     directories['dir_hello_world_no_tests'] = dir
     # Repo with pre_commit error and no tests
-    suc, logs, dir = clone_repo('https://github.com/SandstormVR/\
-                                mullemeck-unit-tests.git',
-                                'a82b9b829d352901e0f37702f87186ca3234d35a')
+    suc, logs, dir = clone_repo(
+        'https://github.com/SandstormVR/mullemeck-unit-tests',
+        'a82b9b829d352901e0f37702f87186ca3234d35a')
     directories['dir_fail_hello_world_no_tests'] = dir
     # Repo with valid test. Pre-commit runs
-    suc, logs, dir = clone_repo('https://github.com/SandstormVR/\
-                                mullemeck-unit-tests.git',
-                                '25e0e252636172a2d38b4ca8b3ada3c60b211596')
+    suc, logs, dir = clone_repo(
+        'https://github.com/SandstormVR/mullemeck-unit-tests',
+        '25e0e252636172a2d38b4ca8b3ada3c60b211596')
     directories['dir_hello_world_success_test'] = dir
-    suc, logs, dir = clone_repo('https://github.com/SandstormVR/\
-                                mullemeck-unit-tests.git',
-                                '76bfd501cf59e6b9380abab5fc508208cf7a1692')
+    suc, logs, dir = clone_repo(
+        'https://github.com/SandstormVR/mullemeck-unit-tests',
+        '76bfd501cf59e6b9380abab5fc508208cf7a1692')
     directories['dir_hello_world_fail_test'] = dir
 
     return directories
@@ -57,7 +57,7 @@ def test_clone_repo():
     assert not os.path.isdir(dir)
     # asserts that with valid repo but invalid commit_id it won't be successful
     # (and checks that the path exists)
-    success, logs, dir = clone_repo('https://github.com/hexadeciman/Snake.git',
+    success, logs, dir = clone_repo('https://github.com/hexadeciman/Snake',
                                     'latestSnake')
     assert success
     assert os.path.isdir(dir)
@@ -65,7 +65,7 @@ def test_clone_repo():
     # error because the path already exists and diretory not empty.
     subprocess.call('rm -rf /tmp/mullemeck/latestSnake', shell=True)
 
-    success, logs, dir = clone_repo('https://github.com/hexadeciman/Snake.git',
+    success, logs, dir = clone_repo('https://github.com/hexadeciman/Snake',
                                     'e36d474082a8bddb0f04d114a24bdbbfc429a41b')
     print(logs)
     assert success
@@ -74,8 +74,10 @@ def test_clone_repo():
 
 
 def test_build_dependencies():
-    success, logs = build_dependecies('random/path/to/nowhere')
-    assert not success
+    directories = create_repos_for_unit_tests()
+
+    success, logs = build_dependecies(directories['dir_dependecies_basics'])
+    assert success
     assert logs != ''
 
 
