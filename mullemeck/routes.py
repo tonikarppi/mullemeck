@@ -16,13 +16,13 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../dev.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
-def process_commit(commit_id, repository_url):
+def process_commit(commit_id, repository_url, committer_email):
     # Runs the build.
     build_status, directory = run_build(repository_url, commit_id)
     # Removes the temporary directory
     subprocess.call('rm -rf ' + directory, shell=True)
 
-    notify_build(app, commit_id)
+    notify_build(app, commit_id, committer_email)
 
 
 queue = TaskQueue(process_commit)
@@ -88,11 +88,11 @@ def webhooks():
 
     commit = req_json['head_commit']
     commit_id = commit['id']
-    commiter_email = commit['committer']['email']
-    print(commit_id)
-    print(commiter_email)
+    committer_email = commit['committer']['email']
 
-    queue.push(commit_id=commit_id, repository_url=repository_url)
+    queue.push(commit_id=commit_id,
+               repository_url=repository_url,
+               committer_email=committer_email)
 
     return '', 200
 
