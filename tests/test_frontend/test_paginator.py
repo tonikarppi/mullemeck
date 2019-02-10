@@ -2,6 +2,11 @@ from mullemeck.paginator import Paginator
 
 
 def test_paginate_number_list():
+    """
+        A simple test case with a list of numbers in the range [0, 17],
+        which is split into smaller lists each consisting of 5 elements
+        or less.
+    """
     list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
     per_page = 5
     paginated_list = Paginator(list, per_page, 1)
@@ -28,6 +33,11 @@ def test_paginate_number_list():
 
 
 def test_paginate_single_items():
+    """
+        A simple test case with a list of numbers in the range [0, 4],
+        which is split into smaller lists each consisting of 1 element
+        each.
+    """
     list = [0, 1, 2, 3, 4]
     per_page = 1
     paginated_list = Paginator(list, per_page, 1)
