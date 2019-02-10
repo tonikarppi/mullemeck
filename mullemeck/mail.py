@@ -1,7 +1,7 @@
 from flask import render_template
 from flask_mail import Mail, Message
 from mullemeck import settings
-from mullemeck.db import Build, Session
+from mullemeck.db import Session, Build
 
 
 def send_mail(app, subject, html_content, recipient):
@@ -23,7 +23,7 @@ def send_mail(app, subject, html_content, recipient):
 def notify_build(app, commit_id):
     session = Session()
     build = session.query(Build) \
-        .filter(commit_id=commit_id) \
+        .filter(Build.commit_id == commit_id) \
         .first()
     content = render_template("build_email.html",
                               url=settings.website_url
