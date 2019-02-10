@@ -1,5 +1,21 @@
 class Paginator:
+    """
+        The purpose of this class is to provide the
+         functionality needed to split up the list of
+         builds in the database into the subpages
+        in build_list as well as making one build_view
+        page for each build in the database.
+    """
+
     def __init__(self, list, per_page, pointer):
+        """
+            The constructor is used to create a paginator
+            object which is a list containing lists which
+            each consist of `per_page` consecutive elements
+            from the `list`. The `pointer` is used to keep
+            track of which page is currently being viewed in
+            the browser.
+        """
         self.per_page = per_page
         self.list = []
         self.number_of_items = len(list)
@@ -20,6 +36,10 @@ class Paginator:
             self.number_of_pages = (self.number_of_items // per_page)
 
     def __str__(self):
+        """
+            The __str__ function is used to create a string of the object
+            which can be printed.
+        """
         return_string = "Printing the paginator object!\n"
         for x in range(0, self.number_of_pages):
             return_string += "Member with index: "+str(x)+"\n ["
