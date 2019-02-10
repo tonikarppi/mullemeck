@@ -60,6 +60,7 @@ def test_build_dependencies():
     # already exists and directory isn't empty.
     subprocess.call('rm -rf ' + directory, shell=True)
 
+    print(logs)
     assert success
     assert logs != ''
 
@@ -87,8 +88,10 @@ def test_build_static_checks():
     subprocess.call('rm -rf ' + success_directory, shell=True)
     subprocess.call('rm -rf ' + fail_directory, shell=True)
 
+    print(logs1)
     assert success1
     assert logs1 != ''
+    print(logs2)
     assert not success2
     assert logs2 != ''
 
@@ -116,7 +119,9 @@ def test_build_tests():
     subprocess.call('rm -rf ' + success_directory, shell=True)
     subprocess.call('rm -rf ' + fail_directory, shell=True)
 
+    print(logs1)
     assert success1
     assert logs1 != ''
+    print(logs2)
     assert not success2
     assert logs2 != ''
