@@ -28,7 +28,7 @@ def run_build(repo_url, commit_id):
 
     # Runs the build itself
     clone_success, clone_logs, directory = clone_repo(repo_url, commit_id)
-    dependencies_success, dependencies_logs = build_dependecies(directory)
+    dependencies_success, dependencies_logs = build_dependencies(directory)
     static_checks_success, static_logs = build_static_checks(directory)
     tests_success, tests_logs = build_tests(directory)
 
@@ -92,9 +92,9 @@ def clone_repo(repo_url, commit_id):
     return success, logs, directory
 
 
-def build_dependecies(directory):
+def build_dependencies(directory):
     """
-    This function runs the installation of the dependecies necessary to run
+    This function runs the installation of the dependencies necessary to run
     the builds.
     """
     command1 = 'cd ' + directory
