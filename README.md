@@ -45,6 +45,14 @@ python -m mullemeck add_samples
 python -m mullemeck develop
 ```
 
+## Interacting with the server
+
+The development server runs on localhost:5000 by default.
+
+When the server is running, the website where the builds can be browsed is available at the server root.
+
+The server accepts JSON webhook requests from Github at the /webhook route.
+
 ## Testing the project
 
 This project uses pytest for its testing framework.
@@ -55,7 +63,7 @@ pytest tests/
 
 ## Documentation
 
-The documentation for this project is available here (add link).
+The documentation for this project is available [here](https://tonikarppi.github.io/mullemeck/).
 
 ## Contributions
 
@@ -63,11 +71,11 @@ This section contains a list of the contribution by the authors of this project.
 
 ### Alexander Westberg-Bladh (xobust)
 
-- Implemented:
-  - Configuration v1
-  - Email sending and templates
-- Setup production environment
-- Various fixes and reviews
+-   Implemented:
+    -   Configuration v1
+    -   Email sending and templates
+-   Setup production environment
+-   Various fixes and reviews
 
 ### Alexis Hubert (SandstormVR)
 
@@ -80,11 +88,12 @@ This section contains a list of the contribution by the authors of this project.
 -   Active participation in reviewing other contributors' code.
 
 ### Isak Peterson (Isak-P)
-* Implemented :
-  * Various sections of the frontend
-  * Various sections of the frontend database logic
-* Various fixes
-* Active participation in reviewing other contributors' code.
+
+-   Implemented :
+    -   Various sections of the frontend
+    -   Various sections of the frontend database logic
+-   Various fixes
+-   Active participation in reviewing other contributors' code.
 
 ### Lars Lundin (Larsrat)
 
