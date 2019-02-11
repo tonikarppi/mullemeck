@@ -33,6 +33,6 @@ def notify_build(app, commit_id, committer_email):
     content = render_template("build_email.html",
                               url=settings.website_url
                               + "/commit-view/"+commit_id,
-                              **build)
+                              **build.__dict__)
 
     send_mail(app, "Build notification", content, committer_email)
