@@ -2,6 +2,12 @@ from mullemeck import mail as email
 from mullemeck.routes import app
 from flask_mail import Mail
 
+"""
+    Tests email functionality using outbox mocking
+
+    Todo: Integration testing
+"""
+
 
 def test_send_mail():
     app.config["TESTING"] = True
@@ -16,7 +22,3 @@ def test_send_mail():
     assert outbox[0].subject == subject
     assert content in outbox[0].html
     assert outbox[0].recipients == [recipient]
-
-
-def test_smtp_server_integration():
-    pass
