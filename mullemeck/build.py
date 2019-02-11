@@ -1,3 +1,10 @@
+"""
+This module contains the builds that run on the tested projects. It implements
+pytest and static checks (python language) with pre-commit using the
+configuration of the project itself.
+"""
+
+
 from validator_collection import checkers
 import subprocess
 import io
