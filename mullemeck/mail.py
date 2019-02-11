@@ -9,9 +9,14 @@ def send_mail(app, subject, html_content, recipient):
     This function sends an email to the email addresses in recipient.
     It configures the mail parameters for Flask app.
     """
-    app.config['MAIL_DEFAULT_SENDER'] = "mulle@meck.net"
-    app.config['MAIL_PORT'] = 1025
-    app.config['MAIL_SERVER'] = "localhost"
+    app.config['MAIL_DEFAULT_SENDER'] = settings.sender_email
+    app.config['MAIL_PORT'] = settings.smtp_port
+    app.config['MAIL_SERVER'] = settings.smtp_server
+    app.config['MAIL_USERNAME'] = settings.smtp_user
+    app.config['MAIL_PASSWORD'] = settings.smtp_password
+    app.config['MAIL_SSL'] = settings.smtp_tls
+    app.config['MAIL_TLS'] = settings.smtp_ssl
+
     mail = Mail(app)
 
     with app.app_context():
@@ -21,7 +26,6 @@ def send_mail(app, subject, html_content, recipient):
 
 
 def notify_build(app, commit_id, committer_email):
-    # TODO: Use committer email
     session = Session()
     build = session.query(Build) \
         .filter(Build.commit_id == commit_id) \
@@ -31,4 +35,4 @@ def notify_build(app, commit_id, committer_email):
                               + "/commit-view/"+commit_id,
                               **build)
 
-    send_mail(app, "Build notification", content, settings.notifictaion_email)
+    send_mail(app, "Build notification", content, committer_email)
