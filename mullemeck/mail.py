@@ -26,6 +26,10 @@ def send_mail(app, subject, html_content, recipient):
 
 
 def notify_build(app, commit_id, committer_email):
+    """
+        Generates email build information about build with commit_id
+        Sends email to commiter_email
+    """
     session = Session()
     build = session.query(Build) \
         .filter(Build.commit_id == commit_id) \
