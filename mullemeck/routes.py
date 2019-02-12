@@ -39,15 +39,16 @@ def build_list(page_num):
 def build_view(page_num):
     session = Session()
     build_list = Paginator(session.query(Build).all(), 1, page_num)
-    return render_template('build_view.html', build_list=build_list)
+    return render_template('build_view.html', build=build_list.list[0][0])
 
 
 @app.route('/commit_view/<string:commit>')
 def commit_view(commit):
     session = Session()
-    build_list = session.query(Build) \
-        .filter(Build.commit_id == commit)
-    return render_template('build_view.html', build_list=build_list)
+    build = session.query(Build) \
+        .filter(Build.commit_id == commit)\
+        .first()
+    return render_template('build_view.html', build=build)
 
 
 @app.route('/')

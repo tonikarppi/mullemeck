@@ -25,8 +25,11 @@ class TaskQueue:
         while True:
             # The process is blocked until new data is
             # available in the queue.
-            args, kwargs = self.queue.get()
-            task(*args, **kwargs)
+            try:
+                args, kwargs = self.queue.get()
+                task(*args, **kwargs)
+            except Exception as ex:
+                print("Exeception thrown in work queue {}".format(ex))
 
     def push(self, *args, **kwargs):
         """
